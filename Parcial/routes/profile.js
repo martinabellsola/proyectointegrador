@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-let controlador = require("../controladores/profilecontrollers")
+let controlador = require("../controladores/profileControllers")
 
 router.get ('/', controlador.profile)
 

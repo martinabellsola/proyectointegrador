@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-let controlador = require("../controladores/logincontrollers")
+let controlador = require("../controladores/loginControllers")
 
 router.get ('/', controlador.login)
 
