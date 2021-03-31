@@ -1,4 +1,4 @@
-let controlador = {
+const controlador = {
 
 }
 
