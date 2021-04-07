@@ -3,6 +3,6 @@ var router = express.Router();
 
 let controlador = require("../controladores/registrationControllers")
 
-router.get ('/', controlador.registration)
+//router.get ('/', controlador.registration)
 
-module.exports = router
+//module.exports = router
