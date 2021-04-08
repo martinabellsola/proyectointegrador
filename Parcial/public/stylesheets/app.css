@@ -268,9 +268,12 @@ hr {
   text-align: center;
 }
 
-.footer-data i {
-  color: var(--light-blue);
-  font-size: 3.5em;
+.footer-data img {
+  width: 40%;
+  border-radius: 70px;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
 }
 
 .footer-data h2 {
@@ -279,11 +282,6 @@ hr {
   font-weight: 400;
 }
 
-.footer-data p {
-  color: var(--gray);
-  font-size: 1.5em;
-  font-weight: 300;
-}
 
 .sub-footer {
   border-top: 1px solid var(--light-gray);
