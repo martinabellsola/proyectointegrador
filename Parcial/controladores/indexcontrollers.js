@@ -12,7 +12,9 @@ const controlador = {
         }
     }
  },
-
+ productoAdd: (req, res, next)=>{
+  res.render("product-add", { products: products} )
+  },
 }
 
 module.exports = controlador
