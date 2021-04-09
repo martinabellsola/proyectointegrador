@@ -7,8 +7,13 @@
 	<link width="" rel="shortcut icon" href="/images/logoSvg.svg" />
 	
 	<title> Hooves </title>
-			<!-- Font Awesome Stylesheet -->
+	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.4.2/dist/css/uikit.min.css" />
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.2/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.2/dist/js/uikit-icons.min.js"></script>
 	<!-- Bootstrap Grid Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
@@ -19,8 +24,31 @@
 	<%- include("partials/header.ejs")%>
 	
 	<!-- Banner -->
-	<div class="banner">
-		<img src="/images/img-home-banner.jpg" alt="Banner de ofertas">
+	<div class="banner" uk-slideshow="autoplay: true; autoplay-interval: 2000; min-height: 200; max-height: 300;">
+		<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+	
+			<ul class="uk-slideshow-items">
+				<li>
+					<img src="/images/bannersIndex/nike2.jpg" alt="" uk-cover>
+				</li>
+				<li>
+					<img src="/images/bannersIndex/convers.jpg" alt="" uk-cover>
+				</li>
+				<li>
+					<img src="/images/bannersIndex/trending.jpg" alt="" uk-cover>
+				</li>
+				<li>
+					<img src="/images/bannersIndex/vans.jpg" alt="" uk-cover>
+				</li>
+			</ul>
+	
+			<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+			<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+	
+		</div>
+	
+		<ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+	
 	</div>
 	<!-- /Banner -->
 
