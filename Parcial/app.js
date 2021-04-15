@@ -8,7 +8,6 @@ var indexRouter = require("./routes/index")
 var loginRouter = require("./routes/login")
 var registrationRouter = require("./routes/registration")
 var searchRouter = require("./routes/search")
-
 var profileRouter = require("./routes/profile")
 
 var app = express();
@@ -27,7 +26,6 @@ app.use('/' , indexRouter)
 app.use('/login' , loginRouter)
 app.use('/register' , registrationRouter)
 app.use('/search' , searchRouter)
-
 app.use('/profile' , profileRouter)
 
 // catch 404 and forward to error handler
