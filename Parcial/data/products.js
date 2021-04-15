@@ -4,7 +4,9 @@ let products = [
     img: "adidasYeezy.jpeg", 
     nombre: "Adidas yeezy boost 350 V2",
     fechaCreacion: "25/02/2021", 
-    productDescription: "Estas zapatillas fueron lanzadas en agosto de 2020 con un precio de $269 usd y al por menor por $170 usd."},
+    productDescription: "Estas zapatillas fueron lanzadas en agosto de 2020 con un precio de $269 usd y al por menor por $170 usd.",
+    comentarios: [ "muy bonito!!!", "Buena calidad", "Llego un poco despues de lo estimado"]
+    },
 
     {usuario: "Felipe Gonzalez",
     idProducto: 2,
