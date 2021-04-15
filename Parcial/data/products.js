@@ -41,14 +41,14 @@ let products = [
     fechaCreacion: "12/01/2019",
     productDescription: "Estas zapatillas fueron lanzadas en septiembre de 2016 con un precio de $269 usd y al por menor por $170 usd."},
 
-    {usuario: "Yamil Ciofre",
+    {usuario: "Veronica Rizzotti",
     idProducto: 7,
     img: "nikeAirForce1.jpeg", 
     nombre: "Nike Air Force 1 Low Supreme",
     fechaCreacion: "01/01/2021",
     productDescription: "Estas zapatillas fueron lanzadas en agosto de 2020 con un precio de $269 usd y al por menor por $170 usd."},
 
-    {usuario: "Ludmila Pavon",
+    {usuario: "Veronica Rizzotti",
     idProducto: 8,
     img: "zadigEtVoltaire.jpeg", 
     nombre: "Zadig et Voltaire High Flash Monogram Sneakers",
