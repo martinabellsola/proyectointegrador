@@ -11,6 +11,7 @@ const controlador = {
         res.render("product", {products:products[index]})
         }
     }
+    
  },
  productoAdd: (req, res, next)=>{
   res.render("product-add", { products: products} )
