@@ -3,7 +3,7 @@ var router = express.Router();
 
 let controlador = require("../controladores/profileControllers")
 
-router.get ('/', controlador.profile)
+router.get ('/:id', controlador.profile)
 router.get ('/edit', controlador.edit)
 
 

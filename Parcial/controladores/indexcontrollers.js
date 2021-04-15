@@ -1,4 +1,5 @@
 const products = require("../data/products")
+const coments = require("../data/comentarios")
 
 const controlador = {
  index: (req, res, next)=>{
@@ -8,7 +9,7 @@ const controlador = {
     let id= req.params.id
     for (let index = 0; index < products.length; index++) {
         if (id == products[index].idProducto) {
-        res.render("product", {products:products[index]})
+        res.render("product", {products:products[index],})
         }
     }
  },

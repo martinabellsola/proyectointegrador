@@ -428,6 +428,17 @@ hr {
   padding: 0 15px;
 }
 
+.form-input-imagen{
+  display: block;
+  width: 100%;
+  height: 45px;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  border-radius: 8px;
+  border: none;
+  padding: 0 15px;
+}
+
 .error{
   color: rgb(209, 0, 0);
   font-size: 1.4em;

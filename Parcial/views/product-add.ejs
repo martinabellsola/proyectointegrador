@@ -27,12 +27,14 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario para agregar prodcutos al catálogo. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos. <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+			<form action="../controladores/loginControllers.js" method="get" >
+				<label class="form-label" for="productname"> Nombre del producto:</label>
+				<input class="form-input" type="text" name="nombreDelProducto">
+				<label class="form-label" for="descripcion"> Breve descripción del producto:</label>
+				<input class="form-input"type="text" name="descripcióndelproducto">
+				<label class="form-label" for="imagen"> Imagen del producto:</label>
+				<input class="form-input-imagen" type="file" name="imagen">
+			</form>
 		</div>
 	</div>
 
