@@ -1,3 +1,5 @@
+//NO SE USO AL FINAL
+
 let comentarios = [
     {usuario: "Juan Lopez",
     idUsuario: 1,

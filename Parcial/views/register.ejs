@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/logoSvg.svg" />
+	<link width="" rel="shortcut icon" href="/images/logoHooves/logoSvg.svg" />
 	
 	<title> Hooves </title>
-			<!-- Font Awesome Stylesheet -->
+	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
+<!-- /Include Head -->
 
 <body>
 	<!-- Header -->
 	<%- include("partials/header.ejs")%>
 	<!-- /Header -->
 
-	<!-- Novedades -->
+	<!-- Formulario Registrarse -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Registrate</h2>
 			</div>
 			<form action="../controladores/loginControllers.js" method="get">
-				<label class="form-label" for="firstname"> Nombre de usuario: </label>
+				<label class="form-label" for="firstname"> Nombre de usuario:</label>
 				<input class="form-input" type="text" name="nombreUsuario">
+
 				<label class="form-label" for="lastname"> Apellido de usuario: </label>
 				<input class="form-input" type="text" name="apellidoUsuario">
+
 				<label class="form-label" for="direccion"> Direccion de correo: </label>
 				<input class="form-input" type="text" name="direccioncorreo" placeholder= usuario@gmail.com >
+
 				<label class="form-label" for="contraceña"> Contraceña:</label>
 				<input class="form-input" type="password" name="contrasenia">
+
 				<label class="form-label" for="contraseña"> Comprueba tu contraceña:</label>
 				<input class="form-input" type="password" name="confirmacioncontrasenia">
 			</form>
-			
+			<!-- falta boton para confirmar la registración -->
 		</div>
 	</div>
 
 	<!-- footer -->
 	<%- include("partials/footer.ejs")%>
 	<!-- /footer -->
-</body>
 
+</body>
 </html>

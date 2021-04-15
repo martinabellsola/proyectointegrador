@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/logoSvg.svg" />
+	<link width="" rel="shortcut icon" href="/images/logoHooves/logoSvg.svg" />
 
 	<title> Hooves </title>
 	<!-- Font Awesome Stylesheet -->
@@ -14,9 +14,15 @@
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
+<!-- Include Head -->
+
 <body>
-	<%- include("partials/header.ejs")%>
-	<!-- product detail -->
+
+	<!-- Header -->
+	<%- include("partials/headerLogueado.ejs")%>
+	<!-- /Header -->
+
+	<!-- Product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= products.nombre%></h2> 
@@ -27,65 +33,70 @@
 		<div class="product-detail">
 			<div class="row">
 					<article class="col-12 col-lg-8 product-detail-info">
-						<img src= "/images/<%=products.img%>" alt="<%= products.nombre%>">
+						<img src= "/images/products/<%=products.img%>" alt="<%= products.nombre%>">
 						<p class="product-detail-description">
 							<%= products.productDescription%></p>
 					</article>
-				<div class="col-12 col-lg-4">
-					<section class="comments">
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/profile/1">Juan Lopez</a> </strong>
-								 ¡¡Este es mi modelo de zapatillas favoritas en el mercado!! les pongo un 10!</p>
-								</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/profile/2">Felipe Gonzalez</a> </strong>
-								 No me gustan, estan pasadas de moda.</p>
-								</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/profile/3">Miguel Gonzalez</a> </strong>
-								 ¡Muy bonitas!</p>
-								</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/profile/4">Maia Sanchez</a> </strong>
-								 ¡Son preciosas! Me encantan con un buen jean.</p>
-								</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/profile/5">Camila Pochettino</a> </strong>
-								 No me terminan de enamorar... no me las compraría.</p>
-								</div>
-						</article>
 
-					</section>
+			<!-- Comentarios -->
+			<div class="col-12 col-lg-4">
+				<section class="comments">
+					<article>
+						<img src="https://via.placeholder.com/35" alt="">
+						<div class="data">
+							<p class="user">
+							<strong> <a href="/profile/1">Juan Lopez</a> </strong>
+							¡¡Este es mi modelo de zapatillas favoritas en el mercado!! les pongo un 10!</p>
+						</div>
+					</article>
+					<article>
+						<img src="https://via.placeholder.com/35" alt="">
+						<div class="data">
+							<p class="user">
+							<strong> <a href="/profile/2">Felipe Gonzalez</a> </strong>
+							No me gustan, estan pasadas de moda.</p>
+							</div>
+					</article>
+					<article>
+						<img src="https://via.placeholder.com/35" alt="">
+						<div class="data">
+							<p class="user">
+							<strong> <a href="/profile/3">Miguel Gonzalez</a> </strong>
+							¡Muy bonitas!</p>
+							</div>
+					</article>
+					<article>
+						<img src="https://via.placeholder.com/35" alt="">
+						<div class="data">
+							<p class="user">
+							<strong> <a href="/profile/4">Maia Sanchez</a> </strong>
+							¡Son preciosas! Me encantan con un buen jean.</p>
+							</div>
+					</article>
+					<article>
+						<img src="https://via.placeholder.com/35" alt="">
+						<div class="data">
+							<p class="user">
+							<strong> <a href="/profile/5">Camila Pochettino</a> </strong>
+							No me terminan de enamorar... no me las compraría.</p>
+							</div>
+					</article>
+				</section>
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
 					<hr>
-				</div>
 			</div>
+	   		</div>
 		</div>
 	</div>
-	<!-- /product detail -->
+	<!-- /Product detail -->
+
+	<!-- footer -->
 	<%- include("partials/footer.ejs")%>
+	<!-- /footer -->
+	
 </body>	
 </html>
 

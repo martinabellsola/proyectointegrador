@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/logoSvg.svg" />
+	<link width="" rel="shortcut icon" href="/images/logoHooves/logoSvg.svg" />
 	
 	<title> Hooves </title>
 	<!-- Font Awesome Stylesheet -->
@@ -19,9 +19,14 @@
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
+<!-- Include Head -->
+
+
 <body>
 	
+	<!-- Header -->
 	<%- include("partials/header.ejs")%>
+	<!-- /Header -->
 	
 	<!-- Banner -->
 	<div class="banner" uk-slideshow="autoplay: true; autoplay-interval: 2000; min-height: 200; max-height: 300;">
@@ -60,12 +65,11 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<%for (let index = 0; index < products.length; index++) { %>
-			
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
 					<a href="/product/<%=products[index].idProducto%>">						
 						<figure class="product-box_image">
-							<img src= "images/<%= products[index].img%>" alt="<%= products[index].nombre%>">
+							<img src= "images/products/<%= products[index].img%>" alt="<%= products[index].nombre%>">
 						</figure>
 						<article class="product-box_data">
 							<h2><%= products[index].nombre%></h2>
@@ -79,6 +83,7 @@
 		</div>
 	</div>
 	<!-- /Novedades -->
+
 	<!-- Más comentados -->
 	<div class="container products-wrapper">
 		<div class="row">
@@ -87,12 +92,11 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<%for (let index = 0; index < products.length; index++) { %>
-			
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
 						<a href="/product/<%=products[index].idProducto%>">						
 							<figure class="product-box_image">
-								<img src= "images/<%= products[index].img%>" alt="<%= products[index].nombre%>">
+								<img src= "images/products/<%= products[index].img%>" alt="<%= products[index].nombre%>">
 							</figure>
 							<article class="product-box_data">
 								<h2><%= products[index].nombre%></h2>
@@ -102,14 +106,15 @@
 						</a>
 					</section>
 				</div>
-				<%}%>
+			<%}%>
 		</div>
 	</div>
 	<!-- /Más comentados -->
 
+	<!-- footer -->
 	<%- include("partials/footer.ejs")%>
+	<!-- /footer -->
 
-	
 </body>	
 </html>
 
