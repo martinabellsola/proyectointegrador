@@ -1,12 +1,12 @@
 /*====== Fonts ======*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 /*====== Variables ======*/
 :root {
   --yellow: #d1cfee;
   --dark-blue: #03264C;
-  --light-blue: #ae918c;
+  --light-blue: #666393;
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
@@ -140,7 +140,7 @@ hr {
 }
 
 .logout:hover{
-  color: #1259c3;
+  color: #666393;
 }
 
 .left-navbar a,
@@ -188,7 +188,8 @@ hr {
 
 .product-box_data h2 {
   font-size: 2.4em;
-  font-weight: 300;
+  font-family: 'Lobster', cursive;
+  font-weight: 100;
   margin: 0;
 }
 
