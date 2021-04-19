@@ -1,6 +1,7 @@
 /*====== Fonts ======*/
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 
 /*====== Variables ======*/
 :root {
@@ -10,8 +11,10 @@
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
-  --base-font-family: 'Roboto', sans-serif
+  --black: #000;
+  --base-font-family: 'Epilogue', sans-serif
 }
+
 
 
 /*====== Basics ======*/
@@ -112,7 +115,7 @@ hr {
 
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
-  background-color: var(--dark-blue);
+  background-color: var(--light-blue);
   color: #ffffff;
   font-size: 1.5em;
   border: none;
@@ -150,6 +153,18 @@ hr {
   border-bottom: solid 1px var(--gray);
 }
 
+/*====== Banner ======*/
+.uk-dotnav>.uk-active>* {
+  background-color: #666393;
+  border-color: transparent;
+}
+.uk-card-primary.uk-card-body .uk-slidenav, .uk-card-primary>:not([class*=uk-card-media]) .uk-slidenav, .uk-card-secondary.uk-card-body .uk-slidenav, .uk-card-secondary>:not([class*=uk-card-media]) .uk-slidenav, .uk-light .uk-slidenav, .uk-offcanvas-bar .uk-slidenav, .uk-overlay-primary .uk-slidenav, .uk-section-primary:not(.uk-preserve-color) .uk-slidenav, .uk-section-secondary:not(.uk-preserve-color) .uk-slidenav, .uk-tile-primary:not(.uk-preserve-color) .uk-slidenav, .uk-tile-secondary:not(.uk-preserve-color) .uk-slidenav {
+  color: #666393;
+}
+.uk-card-primary.uk-card-body .uk-slidenav:focus, .uk-card-primary.uk-card-body .uk-slidenav:hover, .uk-card-primary>:not([class*=uk-card-media]) .uk-slidenav:focus, .uk-card-primary>:not([class*=uk-card-media]) .uk-slidenav:hover, .uk-card-secondary.uk-card-body .uk-slidenav:focus, .uk-card-secondary.uk-card-body .uk-slidenav:hover, .uk-card-secondary>:not([class*=uk-card-media]) .uk-slidenav:focus, .uk-card-secondary>:not([class*=uk-card-media]) .uk-slidenav:hover, .uk-light .uk-slidenav:focus, .uk-light .uk-slidenav:hover, .uk-offcanvas-bar .uk-slidenav:focus, .uk-offcanvas-bar .uk-slidenav:hover, .uk-overlay-primary .uk-slidenav:focus, .uk-overlay-primary .uk-slidenav:hover, .uk-section-primary:not(.uk-preserve-color) .uk-slidenav:focus, .uk-section-primary:not(.uk-preserve-color) .uk-slidenav:hover, .uk-section-secondary:not(.uk-preserve-color) .uk-slidenav:focus, .uk-section-secondary:not(.uk-preserve-color) .uk-slidenav:hover, .uk-tile-primary:not(.uk-preserve-color) .uk-slidenav:focus, .uk-tile-primary:not(.uk-preserve-color) .uk-slidenav:hover, .uk-tile-secondary:not(.uk-preserve-color) .uk-slidenav:focus, .uk-tile-secondary:not(.uk-preserve-color) .uk-slidenav:hover {
+  color: #d1cfee;
+}
+
 /*====== Products ======*/
 .products-wrapper {
   margin-top: 30px;
@@ -158,9 +173,14 @@ hr {
 
 .products-title {
   font-size: 2.4em;
-  font-weight: 400;
+  font-weight: 700;
+  font-family: 'Epilogue';
   color: var(--gray);
 }
+.products-title:hover {
+  color: var(--light-blue);
+}
+
 
 .product-box {
   background-color: #ffffff;
@@ -189,7 +209,7 @@ hr {
 .product-box_data h2 {
   font-size: 2.4em;
   font-family: 'Lobster', cursive;
-  font-weight: 100;
+  font-weight: lighter;
   margin: 0;
 }
 
@@ -237,7 +257,7 @@ hr {
 }
 
 .product-box:hover p {
-  height: 36px;
+  height: 45px;
   margin-top: 15px;
 }
 
@@ -246,44 +266,49 @@ hr {
   box-shadow: 0 0 5px var(--green);
 }
 
+.product-box a.productLink{
+  text-decoration: none;
+}
+
+
 /*====== Footer ======*/
 .main-footer {
   background-color: #ffffff;
-  padding: 20px 0;
-  margin-top: 80px;
+  padding: 10px 0;
+  margin-top: 80px 0px 0px 0px;
 }
-
+ 
 .footer-data {
   text-align: center;
 }
-
+ 
 .footer-data img {
   width: 40%;
   border-radius: 70px;
-  height: 100px;
-  width: 100px;
+  height: 65px;
+  width: 65px;
   object-fit: cover;
 }
-
+ 
 .footer-data h2 {
-  color: var(--gray);
-  font-size: 2.4em;
-  font-weight: 400;
+  color: var(--black);
+  margin: 5% 0% 0% 0%;
+  font-weight: 300;
+  font-size: medium;
+  font-family: "Epilogue";
 }
-
-
+ 
 .sub-footer {
   border-top: 1px solid var(--light-gray);
   background-color: #ffffff;
 }
-
+ 
 .sub-footer p {
   margin: 0;
   color: var(--gray);
   padding: 15px 0;
 }
-
-
+ 
 /*====== Product Detail ======*/
 .product-detail {
   background-color: #ffffff;
