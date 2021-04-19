@@ -1,8 +1,8 @@
 let products = [
     {usuario: "Juan Lopez",
     idProducto: 1,
-    img: "adidasYeezy.jpeg", 
-    nombre: "Adidas yeezy boost 350 V2",
+    img: "adidasOzweego.jpeg", 
+    nombre: "Adidas Ozweego",
     fechaCreacion: "25/02/2021", 
     cantComentarios: 12,
     productDescription: "Estas zapatillas fueron lanzadas en agosto de 2020 con un precio de $269 usd y al por menor por $170 usd.",
@@ -26,8 +26,8 @@ let products = [
 
     {usuario: "Maia Sanchez",
     idProducto: 4,
-    img: "jordan4Retro.jpeg", 
-    nombre: "Jordan 4 Retro off-White Sail",
+    img: "adidasNMD.png", 
+    nombre: "Adidas NMD R1 V2",
     fechaCreacion: "31/10/2019",
     cantComentarios: 56,
     productDescription: "Estas zapatillas fueron lanzadas en noviembre de 2018 con un precio de $269 usd y al por menor por $170 usd."},
@@ -58,8 +58,8 @@ let products = [
 
     {usuario: "Veronica Rizzotti",
     idProducto: 8,
-    img: "zadigEtVoltaire.jpeg", 
-    nombre: "Zadig et Voltaire High Flash Monogram Sneakers",
+    img: "jordanZoom.jpeg", 
+    nombre: "Jordan Zoom 92",
     fechaCreacion: "21/06/2016",
     cantComentarios: 41,
     productDescription: "Estas zapatillas fueron lanzadas en octubre de 2010 con un precio de $269 usd y al por menor por $170 usd."},
