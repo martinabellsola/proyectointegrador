@@ -84,7 +84,12 @@ hr {
   margin-top: 20px;
   text-align: center;
 }
-
+a.main-header_credit-link {
+  text-decoration: none;
+}
+a.main-header_credit-link:hover {
+  color: #666393;
+}
 .search-form {
   position: relative;
   display: flex;
@@ -111,8 +116,11 @@ hr {
   background-color: transparent;
   border: none;
   border-left: solid 1px var(--light-gray);
-  color: var(--gray);
+  color: #666393;
   cursor: pointer;
+}
+.main-navbar a {
+  text-decoration: none;
 }
 
 /*====== Main Navbar ======*/
