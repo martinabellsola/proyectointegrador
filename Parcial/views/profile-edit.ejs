@@ -23,26 +23,39 @@
 
 	<!-- Editar perfil  -->
 	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Editar mi perfil</h2>
-			</div>
-		<!-- Formulario -->
-		<form action="../controladores/loginControllers.js" method="get">
-			<label class="form-label" for="firstname"> Nuevo usuario: </label>
-			<input class="form-input" type="text" name="nombreUsuario">
-
-			<label class="form-label" for="direccion"> Nueva direccion de correo: </label>
-			<input class="form-input" type="text" name="direccioncorreo" placeholder= usuario@gmail.com >
-
-			<label class="form-label" for="contraseña"> Nueva contraseña:</label>
-			<input class="form-input" type="password" name="contrasenia">
-
-			<label class="form-label" for="contraseña"> Confirma tu contraseña:</label>
-			<input class="form-input" type="password" name="confirmacioncontrasenia">
-		</form>
-		</div>
-	</div>
+		
+		
+		<h2 class="products-title">Editar perfil</h2>
+	
+<div class="login-box">
+	<h2>¡Edita tu perfil a tu gusto!</h2>
+	<form>
+	  <div class="user-box">
+		<input type="text" name="" required="">
+		<label>Nuevo nombre de usuario:</label>
+	  </div>
+	  <div class="user-box">
+		<input type="text" name="" required="" placeholder="usuario@gmail.com">
+		<label>Nueva direccion de correo:</label>
+	  </div>
+	  <div class="user-box">
+		<input type="password" name="" required="">
+		<label>Nueva contraseña:</label>
+	  </div>
+	  <div class="user-box">
+		<input type="password" name="" required="">
+		<label>Comprueba tu nueva contraseña:</label>
+	  </div>
+	  <a href="#">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		Submit
+	  </a>
+	</form>
+</div>	
+</div>
 	<!-- footer -->
 	<%- include("partials/footer.ejs")%>
 	<!-- /footer -->

@@ -682,4 +682,5 @@ html {
     width: 95%;
     margin: auto;
   }
+  ::placeholder { color: #c0c0e7; }
 }
