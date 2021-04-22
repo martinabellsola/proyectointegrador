@@ -63,6 +63,23 @@ let products = [
     fechaCreacion: "21/06/2016",
     cantComentarios: 41,
     productDescription: "Estas zapatillas fueron lanzadas en octubre de 2010 con un precio de $269 usd y al por menor por $170 usd."},
+
+    {usuario: "Veronica Rizzotti",
+    idProducto: 9,
+    img: "Jordan-AJ-1-Mid.png", 
+    nombre: "Jordan AJ 1 Mid",
+    fechaCreacion: "04/02/2020",
+    cantComentarios: 38,
+    productDescription: "Estas zapatillas fueron lanzadas en octubre de 2020 con un precio de $115 usd y al por menor por $93 usd."
+    },
+
+    {usuario: "Maia Sanchez",
+    idProducto: 10,
+    img: "Nike-Blazer-Mid.png", 
+    nombre: "Nike Blazer Mid",
+    fechaCreacion: "31/10/1995",
+    cantComentarios: 3,
+    productDescription: "Estas zapatillas fueron lanzadas en noviembre de 1995 con un precio de $85 usd y al por menor por $67 usd."}
 ]
 
 
