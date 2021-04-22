@@ -40,7 +40,7 @@ let products = [
     cantComentarios: 10,
     productDescription: "Estas zapatillas fueron lanzadas en agosto de 2020 con un precio de $269 usd y al por menor por $170 usd."},
 
-    {usuario: "Veronica Rizzotti",
+    {usuario: "Camila Pochettino",
     idProducto: 6,
     img: "newbalance550.jpeg", 
     nombre: "New Balance 550 Aime Leon Dore",
@@ -48,7 +48,7 @@ let products = [
     cantComentarios: 5,
     productDescription: "Estas zapatillas fueron lanzadas en septiembre de 2016 con un precio de $269 usd y al por menor por $170 usd."},
 
-    {usuario: "Veronica Rizzotti",
+    {usuario: "Felipe Gonzalez",
     idProducto: 7,
     img: "nikeAirForce1.jpeg", 
     nombre: "Nike Air Force 1 Low Supreme",
@@ -56,7 +56,7 @@ let products = [
     cantComentarios: 5,
     productDescription: "Estas zapatillas fueron lanzadas en agosto de 2020 con un precio de $269 usd y al por menor por $170 usd."},
 
-    {usuario: "Veronica Rizzotti",
+    {usuario: "Juan Lopez",
     idProducto: 8,
     img: "jordanZoom.jpeg", 
     nombre: "Jordan Zoom 92",
@@ -64,7 +64,7 @@ let products = [
     cantComentarios: 41,
     productDescription: "Estas zapatillas fueron lanzadas en octubre de 2010 con un precio de $269 usd y al por menor por $170 usd."},
 
-    {usuario: "Veronica Rizzotti",
+    {usuario: "Juan Lopez",
     idProducto: 9,
     img: "Jordan-AJ-1-Mid.png", 
     nombre: "Jordan AJ 1 Mid",
