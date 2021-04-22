@@ -40,9 +40,9 @@ let usuario = [
     fechaNacimiento: "1998/02/01"
     },
     {usuario: "Veronica Rizzotti", 
-    cantidadComentarios: "7",
-    cantidadProductos: "400",
-    cantidadSeguidores:"1500",
+    cantidadComentarios: "0",
+    cantidadProductos: "1",
+    cantidadSeguidores:"18",
     idUsuario: 6,
     urlFoto:"/images/usuarios/fotoVeronica.jpg",
     fechaNacimiento: "1982/09/15"
