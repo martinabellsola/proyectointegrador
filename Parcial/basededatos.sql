@@ -16,22 +16,22 @@ nombre varchar(100) not null,
 imagen varchar(120) not null,
 descripcion varchar(1000) not null,
 fechaCreacion date not null,
-usuario_id int,
-foreign key (usuario_id) references usuario(id)
+usuarios_id int,
+foreign key (usuarios_id) references usuarios(id), 
 );
 
 create table comentarios(
 id int primary key auto_increment,
 comentario varchar(1000) not null,
 fechaCreacion date not null,
-usuario_id int,
-foreign key (usuario_id) references usuario(id),
+usuarios_id int,
+foreign key (usuarios_id) references usuarios(id),
 productos_id int,
 foreign key (productos_id) references productos(id)
 );
 
 
-insert into usuario(id, nombre, apellido, nombreusuario, contraseña, mail, fechaNacimiento, imagen, cantidadDeSeguidores)
+insert into usuarios(id, nombre, apellido, nombreusuario, contraseña, mail, fechaNacimiento, imagen, cantidadDeSeguidores)
 values(default,"Juan","Lopez","JuanLopez","password","juanlopez@gmail.com", "1970/04/10", "/images/usuarios/fotoJuan.jpg", 1200), 
 (default,"Felipe","Gonzalez","felipeGonzalez","password","felipeGonzalez@gmail.com", "1997/10/27", "/images/usuarios/fotoFelipe.jpg", 500),
 (default,"Miguel","Gomez","MiguelGomez","password","miguelGomez@gmail.com", "1990/12/18", "/images/usuarios/fotoMiguel.jpg", 300), 
@@ -40,7 +40,7 @@ values(default,"Juan","Lopez","JuanLopez","password","juanlopez@gmail.com", "197
 (default,"Veronica","Rizzotti","VeronicaRizzo","password","verorizzotti@gmail.com", "1982/09/15", "/images/usuarios/fotoVeronica.jpg", 18); 
 
 
-insert into productos(id, nombre, imagen, descripcion, fechaCreacion, usuario_id)
+insert into productos(id, nombre, imagen, descripcion, fechaCreacion, usuarios_id)
 values(default,"Adidas Ozweego", "adidasOzweego.jpeg","Estas zapatillas fueron lanzadas en agosto de 2020 con un precio de $269 usd y al por menor por $170 usd.", "2021/05/01", 1), 
 (default,"Converse Chuck 70 Luxe", "converseChuck.jpeg","Estas zapatillas fueron lanzadas en septiembre de 2018 con un precio de $269 usd y al por menor por $170 usd.", "2019/02/25", 4),
 (default,"Jordan 1 Retro High Satin Snake Chicago", "jordan1Retro.jpeg","Estas zapatillas fueron lanzadas en agosto de 2017 con un precio de $269 usd y al por menor por $170 usd.", "2019/10/05", 3),
@@ -52,7 +52,7 @@ values(default,"Adidas Ozweego", "adidasOzweego.jpeg","Estas zapatillas fueron l
 (default,"Jordan AJ 1 Mid", "Jordan-AJ-1-Mid.png","Estas zapatillas fueron lanzadas en octubre de 2020 con un precio de $115 usd y al por menor por $93 usd.", "2020/02/04", 6),
 (default,"Nike Blazer Mid", "Nike-Blazer-Mid.png","Estas zapatillas fueron lanzadas en noviembre de 1995 con un precio de $85 usd y al por menor por $67 usd.","1995/10/31" , 4); 
 
-insert into comentarios(id, comentario, fechaCreacion, usuario_id, productos_id)
+insert into comentarios(id, comentario, fechaCreacion, usuarios_id, productos_id)
 values(default,"¡¡Este es mi modelo de zapatillas favoritas en el mercado!! les pongo un 10!", "2020/02/01", 1, 1), 
 (default,"¡¡Este es mi modelo de zapatillas favoritas en el mercado!! les pongo un 10!", "2020/02/01", 1, 1),
 (default,"No me gustan, estan pasadas de moda", "2020/02/01", 5, 1),
