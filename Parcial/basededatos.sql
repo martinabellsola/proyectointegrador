@@ -6,8 +6,8 @@ nombreusuario varchar(30) not null,
 contraseña varchar (20) not null,
 mail varchar (120) not null,
 fechaNacimiento date not null,
-imagen varchar(120) not null,
-cantidadDeSeguidores int not null
+imagen varchar(120) not null default ("/images/usuarios/fotoJuan.jpg") ,
+cantidadDeSeguidores int not null default(0)
 );
 
 create table productos(

@@ -5,4 +5,6 @@ let controlador = require("../controladores/registrationControllers")
 
 router.get ('/', controlador.register)
 
+router.post ('/', controlador.registerCrear)
+
 module.exports = router
