@@ -3,39 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 const session = require('express-session');
-app.use(session( {
-  secret: "catalogo de zapatillas",
-	resave: false,
-	saveUninitialized: false
-}));
-
 const db = require('./database/models');
-app.use(function(req, res, next) {
-  if(req.cookies.userId && !req.session.usuario) {
-    db.Usuario.findByPk(req.cookies.userId).then(resultado => {
-      req.session.usuario = resultado.name;
-      return next();
-    });
-  } else {
-  	return next();
-  }}
-);
 
-app.use(function(req, res, next) {
-  if(req.session.usuario){
-    res.locals = {
-      logueado: true
-    }
-  } else {
-    res.locals = {
-      logueado: false
-    }
-  }
-	return next();
-});
-
+// Rutas
 var indexRouter = require("./routes/index")
 var loginRouter = require("./routes/login")
 var registrationRouter = require("./routes/registration")
@@ -44,7 +15,7 @@ var profileRouter = require("./routes/profile")
 
 var app = express();
 
-// view engine setup
+// View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -60,7 +31,42 @@ app.use('/register' , registrationRouter)
 app.use('/search' , searchRouter)
 app.use('/profile' , profileRouter)
 
-// catch 404 and forward to error handler
+// Session setup 
+
+app.use(session({
+  secret: "catalogo de zapatillas", 
+  resave: false,
+  saveUninitialized: true,
+})); 
+
+// Cookies + session 
+
+app.use(function name(req, res, next) {
+  if (req.cookies.userId && !req.session.usuario) {
+    db.Usuario.findByPk(req.cookies.userId).then(resultado => {
+      req.session.usuario = resultado.nombre;
+      return next();
+    });
+  } else {
+    return next();
+  }
+})
+
+//Variables locals
+app.use(function(req, res, next) {
+  if(req.session.usuario){
+    res.locals = {
+      logueado: true
+    }
+  } else {
+    res.locals = {
+      logueado: false
+    }
+  }
+	return next();
+});
+
+// Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
