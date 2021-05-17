@@ -25,11 +25,11 @@ const controlador = {
  productoCrear:(req, res, next)=>{
     db.Producto.create({
        nombre: req.body.nombre,
-       imagen : req.body.imagen,
+       imagen : req.file.filename,
        descripcion: req.body.descripcion,
        fechaCreacion: req.body.fecha
       }).then( productocreado=>{
-         res.redirect('../product/'+productocreado.id)
+         res.redirect('../product/' + productocreado.id)
       }).catch(err => {console.log(err)})
 }}
 
