@@ -29,30 +29,25 @@
 	
 <div class="login-box">
 	<h2>¡Edita tu perfil a tu gusto!</h2>
-	<form>
+	<form method="POST" action="/edit" enctype="multipart/form-data">
 	  <div class="user-box">
-		<input type="text" name="" required="">
+		<input type="text" name="nombre" required="" value="<%=usuario.nombre%>">
 		<label>Nuevo nombre de usuario:</label>
 	  </div>
 	  <div class="user-box">
-		<input type="text" name="" required="" placeholder="usuario@gmail.com">
+		<input type="text" name="mail" required="" placeholder="usuario@gmail.com" value="<%=usuario.mail%>">
 		<label>Nueva direccion de correo:</label>
 	  </div>
 	  <div class="user-box">
-		<input type="password" name="" required="">
+		<input type="password" name="contra" required="" value="<%=usuario.contraseña%>">
 		<label>Nueva contraseña:</label>
 	  </div>
 	  <div class="user-box">
-		<input type="password" name="" required="">
-		<label>Comprueba tu nueva contraseña:</label>
+		<input type="file" name="imagen" required="" accept="image/gif, image/png, image/jpeg" value="<%=usuario.imagen%>"> 
+		<label>imagen:</label>
 	  </div>
-	  <a href="#">
-		<span></span>
-		<span></span>
-		<span></span>
-		<span></span>
-		Submit
-	  </a>
+	 <input type="hidden" name="id" value="<%= usuarios.id %>">
+	 <input type="submit" value="enviar">
 	</form>
 </div>	
 </div>
