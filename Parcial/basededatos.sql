@@ -6,8 +6,8 @@ nombreusuario varchar(30) not null,
 contraseña varchar (20) not null,
 mail varchar (120) not null,
 fechaNacimiento date not null,
-imagen varchar(120) not null default ("/images/usuarios/fotoJuan.jpg") ,
-cantidadDeSeguidores int not null default(0)
+imagen varchar(120) not null default(/images/usuarios/fotoJuan.jpg),
+cantidadDeSeguidores int not null
 );
 
 create table productos(
@@ -17,7 +17,7 @@ imagen varchar(120) not null,
 descripcion varchar(1000) not null,
 fechaCreacion date not null,
 usuarios_id int,
-foreign key (usuarios_id) references usuarios(id) 
+foreign key (usuarios_id) references usuarios(id)
 );
 
 create table comentarios(
@@ -67,7 +67,7 @@ values(default,"Adidas Ozweego", "adidasOzweego.jpeg","Las zapatillas Ozweego se
 (default,"Puma Future Rider", "pumaRider.png","En 1980, cuando la tendencia de las zapatillas para correr se trasladó cada vez más del campo deportivo a la calle, ¡las PUMA Fast Rider ya eran un verdadero éxito! E incluso ahora, 40 años después, su sucesor, el PUMA Future Rider, sigue siendo imprescindible y mejor que nunca. Su silueta deportiva y elegante es particularmente evidente a través de los ingeniosos colores y le brinda a usted y a su atuendo un estilo único. El Future Rider también tiene mucho que ofrecer cuando se trata de comodidad. Una mezcla de materiales ligeros y acolchados de tela y cuero, junto con cordones clásicos, refuerzos de cuero y la suela amortiguadora amortiguadora PUMA te permiten disfrutar del PUMA Rider durante todo el día. Pruébalo ahora y convéncete a ti mismo.","2010/04/20", 2),
 (default,"Jordan Delta", "jordanDelta.png","El calzado de entrenamiento para hombre Jordan Trainer Pro te permite explotar en todas las direcciones. La correa elástica en el mediopié y el riel lateral de goma te mantiene estable y con soporte. Una suela de goma con patrón gráfico de tracción flexible brinda agarre en todos los movimientos.","2008/06/14", 1),
 (default,"Puma Z", "pumaZ.png","El calzado de entrenamiento para hombre Jordan Trainer Pro te permite explotar en todas las direcciones. La correa elástica en el mediopié y el riel lateral de goma te mantiene estable y con soporte. Una suela de goma con patrón gráfico de tracción flexible brinda agarre en todos los movimientos.","2010/06/14", 1),
-(default,"Nike PG4", "nikePG.png","Deportivas, informales, cómodas: las Nike PG 4 son otra zapatilla de la serie exclusiva de Paul George y se caracterizan por una tecnología aún mejor y un diseño más deportivo. El cuello del zapato de corte bajo, la suela de aire liviana y un patrón de tracción circular en la suela le brindan un ajuste seguro, un soporte óptimo y una comodidad de primera clase. La funda de malla con cremallera sobre el cordón es particularmente ingeniosa, lo que garantiza un ajuste aún mejor. Por supuesto, una zapatilla de baloncesto no debe faltar en el diseño adecuado. ¡Es por eso que el PG 4 usa colores sutiles, una suela elevada y cubiertas en forma de malla! ¡Decimos que la Nike PG 4 es una zapatilla que te convierte en la estrella en la cancha y en tu tiempo libre! Pruébelo ahora!","2012/06/11", 5),
+(default,"Nike PG4", "nikePG.png","Deportivas, informales, cómodas: las Nike PG 4 son otra zapatilla de la serie exclusiva de Paul George y se caracterizan por una tecnología aún mejor y un diseño más deportivo. El cuello del zapato de corte bajo, la suela de aire liviana y un patrón de tracción circular en la suela le brindan un ajuste seguro, un soporte óptimo y una comodidad de primera clase. La funda de malla con cremallera sobre el cordón es particularmente ingeniosa, lo que garantiza un ajuste aún mejor. Por supuesto, una zapatilla de baloncesto no debe faltar en el diseño adecuado. ¡Es por eso que el PG 4 usa colores sutiles, una suela elevada y cubiertas en forma de malla! ¡Decimos que la Nike PG 4 es una zapatilla que te convierte en la estrella en la cancha y en tu tiempo libre! Pruébelo ahora!","2012/06/11", 5);
 
 insert into comentarios(id, comentario, fechaCreacion, usuarios_id, productos_id)
 values(default,"¡¡Este es mi modelo de zapatillas favoritas en el mercado!! les pongo un 10!", "2020/02/01", 1, 1), 
