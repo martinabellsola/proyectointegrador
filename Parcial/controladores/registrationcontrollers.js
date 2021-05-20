@@ -1,10 +1,11 @@
-var usuarios= require("../data/users")
 const bcrypt = require('bcryptjs')
 const db = require("../database/models")
 
 const controlador = { 
-  register: (req, res, next)=>{
-    res.render("register", {usuarios:usuarios})
+  register:  (req,res,next)=>{
+    db.Usuario.findAll().then(usuario=>{
+       res.render("register", {usuarios:usuario,})
+    }).catch(err => {console.log(err)})
   },
   registerCrear: (req, res, next)=>{
     let contraencriptada = bcrypt.hashSync(req.body.contra)

@@ -6,7 +6,7 @@ nombreusuario varchar(30) not null,
 contraseña varchar (200) not null,
 mail varchar (120) not null,
 fechaNacimiento date not null,
-imagen varchar(120) not null default "/images/usuarios/fotoJuan.jpg",
+imagen varchar(120) not null default "default.jpg",
 cantidadDeSeguidores int not null default(0)
 );
 
