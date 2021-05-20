@@ -6,8 +6,8 @@ nombreusuario varchar(30) not null,
 contraseña varchar (200) not null,
 mail varchar (120) not null,
 fechaNacimiento date not null,
-imagen varchar(120) not null default(/images/usuarios/fotoJuan.jpg),
-cantidadDeSeguidores int not null
+imagen varchar(120) not null default "/images/usuarios/fotoJuan.jpg",
+cantidadDeSeguidores int not null default(0)
 );
 
 create table productos(
@@ -32,12 +32,12 @@ foreign key (productos_id) references productos(id)
 
 
 insert into usuarios(id, nombre, apellido, nombreusuario, contraseña, mail, fechaNacimiento, imagen, cantidadDeSeguidores)
-values(default,"Juan","Lopez","JuanLopez","password","juanlopez@gmail.com", "1970/04/10", "/images/usuarios/fotoJuan.jpg", 1200), 
-(default,"Felipe","Gonzalez","felipeGonzalez","password","felipeGonzalez@gmail.com", "1997/10/27", "/images/usuarios/fotoFelipe.jpg", 500),
-(default,"Miguel","Gomez","MiguelGomez","password","miguelGomez@gmail.com", "1990/12/18", "/images/usuarios/fotoMiguel.jpg", 300), 
-(default,"Maia","Sanchez","MaiaSanchez","password","maiaSanchez@gmail.com", "1987/07/29", "/images/usuarios/fotoMaia.jpg", 125),
-(default,"Camila","Pochettino","CamilaPochettino","password","camipochettino@gmail.com", "1998/02/01", "/images/usuarios/fotoCamila.jpg", 780),
-(default,"Veronica","Rizzotti","VeronicaRizzo","password","verorizzotti@gmail.com", "1982/09/15", "/images/usuarios/fotoVeronica.jpg", 18); 
+values(default,"Juan","Lopez","JuanLopez","password","juanlopez@gmail.com", "1970/04/10", "fotoJuan.jpg", 1200), 
+(default,"Felipe","Gonzalez","felipeGonzalez","password","felipeGonzalez@gmail.com", "1997/10/27", "fotoFelipe.jpg", 500),
+(default,"Miguel","Gomez","MiguelGomez","password","miguelGomez@gmail.com", "1990/12/18", "fotoMiguel.jpg", 300), 
+(default,"Maia","Sanchez","MaiaSanchez","password","maiaSanchez@gmail.com", "1987/07/29", "fotoMaia.jpg", 125),
+(default,"Camila","Pochettino","CamilaPochettino","password","camipochettino@gmail.com", "1998/02/01", "fotoCamila.jpg", 780),
+(default,"Veronica","Rizzotti","VeronicaRizzo","password","verorizzotti@gmail.com", "1982/09/15", "fotoVeronica.jpg", 18); 
 
 
 insert into productos(id, nombre, imagen, descripcion, fechaCreacion, usuarios_id)

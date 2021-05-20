@@ -25,17 +25,18 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src=<%=usuarios.imagen%>  alt="foto de perfil" class="foto-perfil">
+				<img src="/images/usuarios/<%=usuarios.imagen%>" alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"><%=usuarios.nombre%> <%=usuarios.apellido%>
-						<form action="/edit" method="GET">
+					<h1 class="main-title"> <%=usuarios.nombre%> <%=usuarios.apellido%>
+					<!-- Link editar perfil -->
+						<form action="../profile/edit/<%=usuarios.id%>" method="GET">
 							<input type="hidden" name="id" value="<%=usuarios.id%>">
-							<input type="submit" value="modificar">
-						</form>
-						
+							<input type="submit" value="Modificar">
+					  	</form>
 					</h1>
+
 					<a class="btn mt-3 ml-4" href=""> Seguir</a>
 				</div>
 				<div>
@@ -44,7 +45,6 @@
 						<li><%=usuarios.cantidadDeSeguidores%> seguidores</li>
 						<li><%=usuarios.cantidadComentarios%> comentarios</li>
 						<li><%=usuarios.fechaNacimiento%> </li>
-
 					</ul>
 				</div>
 			</div>
