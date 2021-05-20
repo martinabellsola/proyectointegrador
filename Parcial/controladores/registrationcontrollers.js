@@ -16,8 +16,8 @@ const controlador = {
       mail: req.body.correo,
       fechaNacimiento: req.body.nacimiento,
     }).then (usuario =>{
-     res.redirect ('/');
-    })
+     res.redirect ('../profile/' + usuario.id);
+    }).catch(err => {console.log(err)})
   }  
 }
 
