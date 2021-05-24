@@ -19,7 +19,11 @@
 <body>
 
 	<!-- Header -->
-	<%- include("partials/headerLogueado.ejs")%>
+	<%if(logueado == false){%>
+		<%-include("partials/header.ejs")%>
+		<%}else{%>
+		<%-include("partials/headerLogueado.ejs")%>
+		<%}%>
 	<!-- /Header -->
 
 	<!-- Product detail -->
@@ -41,21 +45,18 @@
 			<!-- Comentarios -->
 			<div class="col-12 col-lg-4">
 				<section class="comments">
-					<% for (let index = 0; index < comentarios.length; index++) {%>
 						<article>
-							<img src="/images/usuarios/<&= usuario.imagen%>" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/profile/<&= usuario.id%>"><%= usuario.nombreusuario%></a> </strong>
-								<%= comentarios[index].comentario%></p>
+							<% for (let index = 0; index < comentarios.length; index++) {%>
+							 <img src="/images/usuarios/<&= usuario.imagen%>" alt="">
+							 <div class="data">
+								 <p class="user">
+								 <strong> 
+									 <a href="/profile/<&= usuario.id%>"><%= usuario.nombreusuario%></a> 
+									</strong>
+							       <%= comentarios[index].comentario%></p>
 							</div>
 						</article>
-					
-						
-					<% }%>
-					
-				
-				
+						<% }%>
 				</section>
 
 					<form class="form comentario" action="" method="GET">

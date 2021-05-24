@@ -25,10 +25,10 @@
 <body>
 	
 	<!-- Header -->
-	<%if(! logueado){%>
-	<%-include("partials/headerLogueado.ejs")%>
-	<%}else{%>
+	<%if(logueado == false){%>
 	<%-include("partials/header.ejs")%>
+	<%}else{%>
+	<%-include("partials/headerLogueado.ejs")%>
 	<%}%>
 
 	<!-- /Header -->

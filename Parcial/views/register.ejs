@@ -18,7 +18,11 @@
 
 <body>
 	<!-- Header -->
-	<%- include("partials/header.ejs")%>
+	<%if(logueado == false){%>
+		<%-include("partials/header.ejs")%>
+		<%}else{%>
+		<%-include("partials/headerLogueado.ejs")%>
+		<%}%>
 	<!-- /Header -->
 
 	<!-- Formulario Registrarse -->

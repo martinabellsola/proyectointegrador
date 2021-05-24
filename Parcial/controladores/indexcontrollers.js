@@ -12,26 +12,25 @@ const controlador = {
       res.render("index", { products: products})
    }).catch(err => {console.log(err)})
  },
+
  producto: (req, res, next)=>{
    db.Producto.findByPk(req.params.id).then(products=>{
       db.Comentario.findAll({where: {productosId:products.id}}).then(comentarios=>{
-         for (let index = 0; index < comentarios.length; index++) {
-            db.Usuario.findByPk(comentarios[index].usuarioId).then(usuario=>{
-               res.render("product", {products:products,comentarios:comentarios, usuario:usuario})
-            })
-            
-         }
-        
+        //for (let index = 0; index < comentarios.length; index++) {
+           // db.Usuario.findByPk(comentarios[index].usuarioId).then(usuario=>{
+               res.render("product", {products:products, comentarios: comentarios})
+           // })
+        //}
       })
-     
-      
    }).catch(err => {console.log(err)})
  },
+
  productoAdd: (req, res, next)=>{
    db.Producto.findAll().then(products=>{
       res.render("product-add", { products: products} )
    }).catch(err => {console.log(err)})
  },
+
  productoCrear:(req, res, next)=>{
     db.Producto.create({
        nombre: req.body.nombre,

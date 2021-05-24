@@ -18,7 +18,11 @@
 
 <body>
 	<!-- Header -->
-	<%- include("partials/headerLogueado.ejs")%>
+	<%if(logueado == false){%>
+		<%-include("partials/header.ejs")%>
+		<%}else{%>
+		<%-include("partials/headerLogueado.ejs")%>
+		<%}%>
 	<!-- /Header -->
 
 	<!-- Agregar productos -->
