@@ -41,46 +41,21 @@
 			<!-- Comentarios -->
 			<div class="col-12 col-lg-4">
 				<section class="comments">
-					<article>
-						<img src="/images/usuarios/fotoJuan.jpg" alt="">
-						<div class="data">
-							<p class="user">
-							<strong> <a href="/profile/1">Juan Lopez</a> </strong>
-							¡¡Este es mi modelo de zapatillas favoritas en el mercado!! les pongo un 10!</p>
-						</div>
-					</article>
-					<article>
-						<img src="/images/usuarios/fotoFelipe.jpg" alt="">
-						<div class="data">
-							<p class="user">
-							<strong> <a href="/profile/2">Felipe Gonzalez</a> </strong>
-							No me gustan, estan pasadas de moda.</p>
+					<% for (let index = 0; index < comentarios.length; index++) {%>
+						<article>
+							<img src="/images/usuarios/<&= usuario.imagen%>" alt="">
+							<div class="data">
+								<p class="user">
+								<strong> <a href="/profile/<&= usuario.id%>"><%= usuario.nombreusuario%></a> </strong>
+								<%= comentarios[index].comentario%></p>
 							</div>
-					</article>
-					<article>
-						<img src="/images/usuarios/fotoMiguel.jpg" alt="">
-						<div class="data">
-							<p class="user">
-							<strong> <a href="/profile/3">Miguel Gonzalez</a> </strong>
-							¡Muy bonitas!</p>
-							</div>
-					</article>
-					<article>
-						<img src="/images/usuarios/fotoMaia.jpg" alt="">
-						<div class="data">
-							<p class="user">
-							<strong> <a href="/profile/4">Maia Sanchez</a> </strong>
-							¡Son preciosas! Me encantan con un buen jean.</p>
-							</div>
-					</article>
-					<article>
-						<img src="/images/usuarios/fotoCamila.jpg" alt="">
-						<div class="data">
-							<p class="user">
-							<strong> <a href="/profile/5">Camila Pochettino</a> </strong>
-							No me terminan de enamorar... no me las compraría.</p>
-							</div>
-					</article>
+						</article>
+					
+						
+					<% }%>
+					
+				
+				
 				</section>
 
 					<form class="form comentario" action="" method="GET">

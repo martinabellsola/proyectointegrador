@@ -14,7 +14,17 @@ const controlador = {
  },
  producto: (req, res, next)=>{
    db.Producto.findByPk(req.params.id).then(products=>{
-      res.render("product", {products:products,})
+      db.Comentario.findAll({where: {productosId:products.id}}).then(comentarios=>{
+         for (let index = 0; index < comentarios.length; index++) {
+            db.Usuario.findByPk(comentarios[index].usuarioId).then(usuario=>{
+               res.render("product", {products:products,comentarios:comentarios, usuario:usuario})
+            })
+            
+         }
+        
+      })
+     
+      
    }).catch(err => {console.log(err)})
  },
  productoAdd: (req, res, next)=>{

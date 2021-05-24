@@ -3,15 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const session = require('express-session');
-const db = require('./database/models');
-
 
 var indexRouter = require("./routes/index")
 var loginRouter = require("./routes/login")
 var registrationRouter = require("./routes/registration")
 var searchRouter = require("./routes/search")
 var profileRouter = require("./routes/profile")
+var logoutRouter = require("./routes/logout")
 
 var app = express();
 
@@ -25,11 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/' , indexRouter)
-app.use('/login' , loginRouter)
-app.use('/register' , registrationRouter)
-app.use('/search' , searchRouter)
-app.use('/profile' , profileRouter)
+const session = require('express-session');
 
 app.use(session({
   secret: "catalogo de zapatillas",
@@ -37,10 +31,13 @@ app.use(session({
 	saveUninitialized: false
 }));
 
+const db = require('./database/models');
+
 app.use(function(req, res, next) {
   if(req.cookies.userId && !req.session.usuario) {
     db.Usuario.findByPk(req.cookies.userId).then(resultado => {
-      req.session.usuario = resultado.name;
+      req.session.usuario= resultado.nombreusuario;
+      req.session.id= resultado.id;
       return next();
     });
   } else {
@@ -49,17 +46,32 @@ app.use(function(req, res, next) {
 );
 
 app.use(function(req, res, next) {
-  if(req.session.usuario){
+  if(req.session.usuario ){
     res.locals = {
-      logueado: true
-    }
+      logueado: true,
+      usuario: req.session.usuario,
+    
+   }
   } else {
     res.locals = {
-      logueado: false
+      logueado: false,
+      usuario: null
     }
   }
 	return next();
 });
+
+
+
+
+app.use('/' , indexRouter)
+app.use('/login' , loginRouter)
+app.use('/register' , registrationRouter)
+app.use('/search' , searchRouter)
+app.use('/profile' , profileRouter)
+app.use('/logout' , logoutRouter)
+
+
 
 // catch 404 and forward to error handler
 

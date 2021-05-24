@@ -25,7 +25,12 @@
 <body>
 	
 	<!-- Header -->
-	<%- include("partials/header.ejs")%>
+	<%if(! logueado){%>
+	<%-include("partials/headerLogueado.ejs")%>
+	<%}else{%>
+	<%-include("partials/header.ejs")%>
+	<%}%>
+
 	<!-- /Header -->
 	
 	<!-- Banner -->
@@ -56,7 +61,6 @@
 	
 	</div>
 	<!-- /Banner -->
-
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
