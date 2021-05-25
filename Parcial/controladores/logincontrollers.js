@@ -8,21 +8,19 @@ const controlador = {
 
   validacion:(req, res, next)=>{
     const filtro = {
-      where: {nombreUsuario: req.body.name }
+      where: {nombreUsuario: req.body.nombreUsuario }
     }
-   db.Usuario.findOne(filtro).then(
-     usuario=>{
+    db.Usuario.findOne(filtro).then(usuario=>{
        if (bcrypt.compareSync(req.body.password, usuario.contraseña)) {
          req.session.usuario= usuario.nombreUsuario,
          req.session.id= usuario.id
-        
-         if (req.body.rememberMe) {
-           res.cookie('userId', usuario.id, {maxAge:1000*60*5})
-         }console.log(userId);
-        } 
-     res.redirect('/')
-     alert("funciono!!!!!!!!!!")
-     })
+
+          if (req.body.rememberMe) {
+            res.cookie('userId', usuario.id, {maxAge:1000*60*5})
+          }
+
+        } res.redirect('/')
+    })
   },
 
   logout:(req, res, next)=>{

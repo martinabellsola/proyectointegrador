@@ -18,7 +18,7 @@
 
 <body>
 	<!-- Header -->
-	<%if(logueado == false){%>
+	<%if (logueado == false){%>
 		<%-include("partials/header.ejs")%>
 		<%}else{%>
 		<%-include("partials/headerLogueado.ejs")%>
@@ -37,11 +37,11 @@
 					<h2>¡Ingresa!</h2>
 					<form method="POST" action="/login">
 					  <div class="user-box">
-						<input type="text" name="name" required="" id="">
+						<input type="text" name="nombreUsuario" id="">
 						<label>Nombre de usuario:</label>
 					  </div>
 					  <div class="user-box">
-						<input type="password" name="password" required="" id="">
+						<input type="password" name="password" id="">
 						<label>Contraseña:</label>
 					  </div>
 					  <div class="user-box">

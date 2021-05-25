@@ -36,8 +36,8 @@ const db = require('./database/models');
 app.use(function(req, res, next) {
   if(req.cookies.userId && !req.session.usuario) {
     db.Usuario.findByPk(req.cookies.userId).then(resultado => {
-      req.session.usuario= resultado.nombreUsuario;
-      req.session.id= resultado.id;
+      req.session.usuario = resultado.nombreUsuario;
+      req.session.id = resultado.id;
       return next();
     });
   } else {
@@ -46,15 +46,11 @@ app.use(function(req, res, next) {
 );
 
 app.use(function(req, res, next) {
-  console.log("bbbbbb");
-  console.log(req.session.usuario);
   if(req.session.usuario ){
     res.locals = {
       logueado: true,
       usuario: req.session.usuario,
-    
    } 
-   
   } else {
     res.locals = {
       logueado: false,
