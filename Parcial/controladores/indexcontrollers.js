@@ -36,8 +36,11 @@ const controlador = {
        nombre: req.body.nombre,
        imagen : req.file.filename,
        descripcion: req.body.descripcion,
-       fechaCreacion: req.body.fecha
+       fechaCreacion: req.body.fecha,
+       //usuarioId: req.body.usuarioId
       }).then( productocreado=>{
+         console.log(req.session.id);
+         console.log("HOLAAA");
          res.redirect('../product/' + productocreado.id)
       }).catch(err => {console.log(err)})
 }}

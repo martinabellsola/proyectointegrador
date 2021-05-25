@@ -16,7 +16,7 @@ const controlador = {
          req.session.id= usuario.id
 
           if (req.body.rememberMe) {
-            res.cookie('userId', usuario.id, {maxAge:1000*60*5})
+            res.cookie('userId', usuario.id, {maxAge:2000*60*5})
           }
 
         } res.redirect('/')
