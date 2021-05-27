@@ -37,13 +37,23 @@ const controlador = {
        imagen : req.file.filename,
        descripcion: req.body.descripcion,
        fechaCreacion: req.body.fecha,
-       //usuarioId: req.body.usuarioId
+       usuarioId:  req.session.userId
       }).then( productocreado=>{
-         console.log(req.session.id);
-         console.log("HOLAAA");
          res.redirect('../product/' + productocreado.id)
       }).catch(err => {console.log(err)})
-}}
+  }, 
+  commentAdd: (req, res, next)=>{
+     db.Comentario.create({
+        comentario: req.body.comentario,
+        usuarioId: req.session.userId,
+        productosId: req.body.productId,
+     }).then(comentarioCreado =>{
+        console.log(req.body.productId)
+      res.redirect('../product/' + req.body.productId)
+   }).catch(err => {console.log(err)})
+  }
+  // agregar con moment fecha de creación = hoy 
+}
 
 module.exports = controlador
 

@@ -23,16 +23,18 @@
 		<%-include("partials/header.ejs")%>
 		<%}else{%>
 		<%-include("partials/headerLogueado.ejs")%>
-		<%}%>
+	<%}%>
 	<!-- /Header -->
 
 	<!-- Product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= products.nombre%></h2> 
-			<p class="product-detail-description">
-				<a href="../add">Editar</a>
-			</p>
+			<%if(usuarioId == products.usuarioId){%>
+				<p class="product-detail-description">
+					<a href="../add">Editar</a>
+				</p>
+			<%}%>
 		</div>
 		<div class="product-detail">
 			<div class="row">
@@ -51,7 +53,7 @@
 							 <div class="data">
 								 <p class="user">
 								 <strong> 
-									 <a href="/profile/<&= usuario.id%>"><%= usuario.nombreusuario%></a> 
+									 <a href="/profile/<&= usuario.id%>"><%= usuario.nombreUsuario%></a> 
 									</strong>
 							       <%= comentarios[index].comentario%></p>
 							</div>
@@ -61,6 +63,7 @@
 
 					<form class="form comentario" action="/comentar" method="POST">
 						<input class="form-input" type="text" value="" name="comentario" placeholder="Agregar comentario">
+						<input type="hidden" name="productId" value="<%= products.id%>">
 						<hr>
 						<button type="submit" class="buy-now-button" >AGREGAR COMENTARIO</button>
 					</form>

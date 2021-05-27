@@ -11,16 +11,20 @@ const controlador = {
       where: {nombreUsuario: req.body.nombreUsuario }
     }
     db.Usuario.findOne(filtro).then(usuario=>{
-       if (bcrypt.compareSync(req.body.password, usuario.contraseña)) {
-         req.session.usuario= usuario.nombreUsuario,
-         req.session.id= usuario.id
+     console.log(req.body.password)  
+     console.log(usuario.contraseña)
+     if (bcrypt.compareSync(req.body.password, usuario.contraseña)) {
+         req.session.usuario = usuario.nombreUsuario,
+         req.session.userId = usuario.id
 
           if (req.body.rememberMe) {
             res.cookie('userId', usuario.id, {maxAge:2000*60*5})
           }
-
-        } res.redirect('/')
-    })
+          res.redirect('/')
+        } else{
+          res.redirect('/register')
+        }
+    }).catch(err => {console.log(err)})
   },
 
   logout:(req, res, next)=>{

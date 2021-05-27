@@ -37,7 +37,8 @@ app.use(function(req, res, next) {
   if(req.cookies.userId && !req.session.usuario) {
     db.Usuario.findByPk(req.cookies.userId).then(resultado => {
       req.session.usuario = resultado.nombreUsuario;
-      req.session.id = resultado.id;
+      req.session.userId = resultado.id;
+
       return next();
     });
   } else {
@@ -50,7 +51,7 @@ app.use(function(req, res, next) {
     res.locals = {
       logueado: true,
       usuario: req.session.usuario,
-      usuarioId: req.session.id
+      usuarioId: req.session.userId
    } 
   } else {
     res.locals = {
@@ -58,6 +59,7 @@ app.use(function(req, res, next) {
       usuario: null
     }
   }
+  console.log("APPPP")
 	return next();
 }); 
 

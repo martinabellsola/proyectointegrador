@@ -19,4 +19,6 @@ router.get ('/', controlador.index)
 router.get ('/product/:id', controlador.producto)
 router.get ('/add', controlador.productoAdd)
 router.post("/crear", upload.single("imagen"), controlador.productoCrear)
+router.post ('/comentar', controlador.commentAdd)
+
 module.exports = router
