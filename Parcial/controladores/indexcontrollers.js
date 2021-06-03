@@ -6,12 +6,15 @@ const controlador = {
    let filtronuevos = {
       order: [
          ['fechaCreacion', 'DESC'],
-      ]}
+      ],
+     limit: 8,
+}
       let filtroviejos = {
          order: [
             ['fechaCreacion', 'ASC'],
-         ]
-   }     //habría que crear un nuevo filtro para las más comentadas
+         ],
+         limit: 8,
+   }     
    db.Producto.findAll(filtronuevos).then(productosnuevos=>{
       
       db.Producto.findAll(filtroviejos).then(productosviejos=>{
