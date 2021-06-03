@@ -3,24 +3,44 @@ const Op = db.Sequelize.Op;
 
 const controlador = {
  index: (req, res, next)=>{
-   let filtro = {
+   let filtronuevos = {
       order: [
          ['fechaCreacion', 'DESC'],
-      ],
+      ]}
+      let filtroviejos = {
+         order: [
+            ['fechaCreacion', 'ASC'],
+         ]
    }     //habría que crear un nuevo filtro para las más comentadas
-   db.Producto.findAll(filtro).then(products=>{
-      res.render("index", { products: products})
+   db.Producto.findAll(filtronuevos).then(productosnuevos=>{
+      
+      db.Producto.findAll(filtroviejos).then(productosviejos=>{
+          res.render("index", { products: productosnuevos,productsviejos:productosviejos})
+      }
+         
+      )
+     
    }).catch(err => {console.log(err)})
+
  },
 
+
  producto: (req, res, next)=>{
-   db.Producto.findByPk(req.params.id).then(products=>{
-      db.Comentario.findAll({where: {productosId:products.id}}).then(comentarios=>{
-        //for (let index = 0; index < comentarios.length; index++) {
-           // db.Usuario.findByPk(comentarios[index].usuarioId).then(usuario=>{
-               res.render("product", {products:products, comentarios: comentarios})
-           // })
-        //}
+    
+   db.Producto.findOne({where:{id:5}, include:[{associate:"comentario"}] }).then(prueba=>{
+      console.log(prueba.nombre)
+      console.log(prueba.comentario.comentario)
+   })
+    const filtro= {
+         
+         include:[{associate:"comentario", include:"usuario"}]
+      }
+   db.Producto.findByPk(req.params.id, filtro).then(products=>{
+     
+      db.Comentario.findAll(products.id).then(comentarios=>{
+      
+            res.render("product", {products:products, comentarios: comentarios})
+         
       })
    }).catch(err => {console.log(err)})
  },

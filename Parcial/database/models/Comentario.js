@@ -24,6 +24,17 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "comentarios", 
         timestamps: false
     });
-
+    Comentario.associate=(db)=>{
+        Comentario.belongsTo(db.Usuario,{
+            as: "usuario",
+            foreignKey:"usuarios_id",
+        })
+    }
+    Comentario.associate=(db)=>{
+        Comentario.belongsTo(db.Producto,{
+            as: "producto",
+            foreignKey:"productos_id",
+        })
+    }
     return Comentario; 
 }; 
