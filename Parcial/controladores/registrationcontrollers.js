@@ -9,7 +9,16 @@ const controlador = {
   },
   registerCrear: (req, res, next)=>{
     let contraencriptada = bcrypt.hashSync(req.body.contra)
-    db.Usuario.create({
+    let error= {}
+    if (req.body.correo!=null) {
+      //db.Usuario.findAll({where:{mail:req.body.correo}}).then(resultado=>{
+       //  if (resultado) {
+       
+        error.mensaje="mail ya registrado"
+        res.locals.error=error
+        return res.render("register")
+     }else{ 
+      db.Usuario.create({
       nombre: req.body.nombre,
       apellido: req.body.apellido,
       nombreUsuario: req.body.usuario,
@@ -20,7 +29,14 @@ const controlador = {
     req.session.usuario = usuario.nombreUsuario,
     req.session.id = usuario.id,
      res.redirect('../profile/' + usuario.id);
-    }).catch(err => {console.log(err)})
+    })
+    //  }
+      //})
+     
+    }//else{
+     // error="no ingresaste un mail"
+   // }
+   
   }  
 }
 
