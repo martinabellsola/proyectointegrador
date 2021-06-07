@@ -8,16 +8,37 @@ const controlador = {
     }).catch(err => {console.log(err)})
   },
   registerCrear: (req, res, next)=>{
+    let contra = req.body.contra
     let contraencriptada = bcrypt.hashSync(req.body.contra)
-    let error= {}
-    if (req.body.correo!=null) {
-      //db.Usuario.findAll({where:{mail:req.body.correo}}).then(resultado=>{
-       //  if (resultado) {
-       
-        error.mensaje="mail ya registrado"
-        res.locals.error=error
+    let errors= {}
+
+    let correoexistente 
+
+    db.Usuario.findAll({where:{mail: req.body.correo}}).then(usuario=>{ 
+      console.log(usuario);
+      correoexistente = usuario.mail
+    });
+    
+    console.log('ESTE WI');
+    console.log(correoexistente);
+
+    if (req.body.correo == '') {
+        errors.message= "Porfavor es necesario que ingrese un mail"
+        res.locals.errors=errors
         return res.render("register")
-     }else{ 
+     }else if (correoexistente) {
+      errors.message= "El correo que ingresó ya ha sido registrado, porfavor ingrese otro"
+      res.locals.errors=errors
+     } else if (req.body.contra == '') {
+      errors.message= "Porfavor es necesario que ingrese una contraseña"
+      res.locals.errors=errors
+      return res.render("register")
+     } else if ( contra.length <= 4) {
+      errors.message= "Porfavor es necesario que la contraseña tenga al menos 4 letras"
+      res.locals.errors=errors
+      return res.render("register")
+     }
+     else{
       db.Usuario.create({
       nombre: req.body.nombre,
       apellido: req.body.apellido,
@@ -30,14 +51,7 @@ const controlador = {
     req.session.id = usuario.id,
      res.redirect('../profile/' + usuario.id);
     })
-    //  }
-      //})
-     
-    }//else{
-     // error="no ingresaste un mail"
-   // }
-   
-  }  
+     }}
 }
 
 module.exports = controlador

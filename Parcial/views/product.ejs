@@ -43,14 +43,14 @@
 			<!-- Comentarios -->
 			<div class="col-12 col-lg-4">
 				<section class="comments">
+					<% for (let index = 0; index < products.comentario.length; index++) { let producto = products.comentario[index]%>
 						<article>
-							<% for (let index = 0; index < products.comentario.length; index++) { let producto = products.comentario[index]%>
 								<% console.log(producto)%>
-							 <img src="/images/usuarios/<&= producto.usuario.imagen%>" alt="">
+							 <img src="/images/usuarios/<%= producto.usuario.imagen%>" alt="">
 							 <div class="data">
 								 <p class="user">
 								 <strong> 
-									 <a href="/profile/<&= producto.usuario.id%>"><%= producto.usuario.nombreUsuario%></a> 
+									 <a href="/profile/<%= producto.usuario.id%>"><%= producto.usuario.nombreUsuario%></a> 
 									</strong>
 							       <%= producto.comentario%></p>
 							</div>
