@@ -15,36 +15,23 @@ const controlador = {
          ],
          limit: 8,
    }     
-   db.Producto.findAll(filtronuevos).then(productosnuevos=>{
-      
-      db.Producto.findAll(filtroviejos).then(productosviejos=>{
-          res.render("index", { products: productosnuevos,productsviejos:productosviejos})
-      }
-         
-      )
-     
+   db.Producto.findAll(filtronuevos).then(productosnuevos=>{ 
+   db.Producto.findAll(filtroviejos).then(productosviejos=>{
+      res.render("index", { products: productosnuevos,productsviejos:productosviejos})
+      } )
    }).catch(err => {console.log(err)})
-
  },
 
-
  producto: (req, res, next)=>{
-    
-   db.Producto.findOne({where:{id:5}, include:[{associate:"comentario"}] }).then(prueba=>{
-      console.log(prueba.nombre)
-      console.log(prueba.comentario.comentario)
-   })
-    const filtro= {
-         
-         include:[{associate:"comentario", include:"usuario"}]
+   const filtro= {
+       include:[{association:"comentario", include:"usuario"}]
       }
    db.Producto.findByPk(req.params.id, filtro).then(products=>{
-     
-      db.Comentario.findAll(products.id).then(comentarios=>{
+      res.render("product", {products:products})
+      console.log( 'EL DEL CONTROLADOR');
+      console.log(products);
+      console.log( 'EL DEL CONTROLADOR');
       
-            res.render("product", {products:products, comentarios: comentarios})
-         
-      })
    }).catch(err => {console.log(err)})
  },
 

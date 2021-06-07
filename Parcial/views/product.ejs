@@ -30,11 +30,7 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= products.nombre%></h2> 
-			<%if(usuarioId == products.usuarioId){%>
-				<p class="product-detail-description">
-					<a href="../add">Editar</a>
-				</p>
-			<%}%>
+			
 		</div>
 		<div class="product-detail">
 			<div class="row">
@@ -48,14 +44,15 @@
 			<div class="col-12 col-lg-4">
 				<section class="comments">
 						<article>
-							<% for (let index = 0; index < comentarios.length; index++) {%>
-							 <img src="/images/usuarios/<&= usuario.imagen%>" alt="">
+							<% for (let index = 0; index < products.comentario.length; index++) { let producto = products.comentario[index]%>
+								<% console.log(producto)%>
+							 <img src="/images/usuarios/<&= producto.usuario.imagen%>" alt="">
 							 <div class="data">
 								 <p class="user">
 								 <strong> 
-									 <a href="/profile/<&= usuario.id%>"><%= usuario.nombreUsuario%></a> 
+									 <a href="/profile/<&= producto.usuario.id%>"><%= producto.usuario.nombreUsuario%></a> 
 									</strong>
-							       <%= comentarios[index].comentario%></p>
+							       <%= producto.comentario%></p>
 							</div>
 						</article>
 						<% }%>

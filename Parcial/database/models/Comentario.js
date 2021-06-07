@@ -28,9 +28,7 @@ module.exports = (sequelize, dataTypes) => {
         Comentario.belongsTo(db.Usuario,{
             as: "usuario",
             foreignKey:"usuarios_id",
-        })
-    }
-    Comentario.associate=(db)=>{
+        }),
         Comentario.belongsTo(db.Producto,{
             as: "producto",
             foreignKey:"productos_id",
