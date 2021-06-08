@@ -8,30 +8,30 @@ const controlador = {
          ['fechaCreacion', 'DESC'],
       ],
      limit: 8,
-}
-      let filtroviejos = {
-         order: [
-            ['fechaCreacion', 'ASC'],
-         ],
-         limit: 8,
+   }
+   let filtroviejos = {
+      order: [
+         ['fechaCreacion', 'ASC'],
+      ],
+      limit: 8,
    }     
    db.Producto.findAll(filtronuevos).then(productosnuevos=>{ 
    db.Producto.findAll(filtroviejos).then(productosviejos=>{
-      res.render("index", { products: productosnuevos,productsviejos:productosviejos})
+      res.render("index", { products: productosnuevos, productsviejos:productosviejos})
       } )
    }).catch(err => {console.log(err)})
  },
 
  producto: (req, res, next)=>{
    const filtro= {
-       include:[{association:"comentario", include:"usuario"}]
-      }
+      include:[{
+         association:"comentario", 
+         include:"usuario",
+         where: {productosId: req.params.id}
+      }]
+   }
    db.Producto.findByPk(req.params.id, filtro).then(products=>{
-      res.render("product", {products:products})
-      console.log( 'EL DEL CONTROLADOR');
-      console.log(products);
-      console.log( 'EL DEL CONTROLADOR');
-      
+      res.render("product", {products: products})
    }).catch(err => {console.log(err)})
  },
 
@@ -42,23 +42,23 @@ const controlador = {
  },
 
  productoCrear:(req, res, next)=>{
-    db.Producto.create({
-       nombre: req.body.nombre,
-       imagen : req.file.filename,
-       descripcion: req.body.descripcion,
-       fechaCreacion: req.body.fecha,
-       usuarioId:  req.session.userId
-      }).then( productocreado=>{
-         res.redirect('../product/' + productocreado.id)
-      }).catch(err => {console.log(err)})
+   db.Producto.create({
+      nombre: req.body.nombre,
+      imagen : req.file.filename,
+      descripcion: req.body.descripcion,
+      fechaCreacion: req.body.fecha,
+      usuarioId:  req.session.userId
+   }).then( productocreado=>{
+      res.redirect('../product/' + productocreado.id)
+   }).catch(err => {console.log(err)})
   }, 
+
   commentAdd: (req, res, next)=>{
-     db.Comentario.create({
-        comentario: req.body.comentario,
-        usuarioId: req.session.userId,
-        productosId: req.body.productId,
-     }).then(comentarioCreado =>{
-        console.log(req.body.productId)
+   db.Comentario.create({
+      comentario: req.body.comentario,
+      usuarioId: req.session.userId,
+      productosId: req.body.productId,
+   }).then(comentarioCreado =>{
       res.redirect('../product/' + req.body.productId)
    }).catch(err => {console.log(err)})
   }

@@ -29,7 +29,7 @@
 	<!-- Product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= products.nombre%></h2> 
+			<h2 class="products-title"> <%=products.nombre%></h2> 
 			
 		</div>
 		<div class="product-detail">
@@ -43,10 +43,10 @@
 			<!-- Comentarios -->
 			<div class="col-12 col-lg-4">
 				<section class="comments">
-					<% for (let index = 0; index < products.comentario.length; index++) { let producto = products.comentario[index]%>
+					<% for (let index = 0; index < products.comentario.length; index++) { 
+						let producto = products.comentario[index] %>
 						<article>
-								<% console.log(producto)%>
-							 <img src="/images/usuarios/<%= producto.usuario.imagen%>" alt="">
+							<img src="/images/usuarios/<%= producto.usuario.imagen%>" alt="">
 							 <div class="data">
 								 <p class="user">
 								 <strong> 

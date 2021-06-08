@@ -20,14 +20,13 @@
 	<!-- Header -->
 	<%if(logueado == false){%>
 		<%-include("partials/header.ejs")%>
-		<%}else{%>
+	<%}else{%>
 		<%-include("partials/headerLogueado.ejs")%>
-		<%}%>
+	<%}%>
 	<!-- /Header -->
 
 	<!-- Formulario Registrarse -->
 	<!-- Formulario -->
-
 	<div class="container products-wrapper">
 		
 	<h2 class="products-title">Registrate</h2>
@@ -65,10 +64,6 @@
 			<input type="password" name="contra" >
 			<label>Contraseña:</label>
 		  </div>
-		  <!--<div class="user-box">
-			<input type="password" name="contra" required="">
-			<label>Comprueba tu contraseña:</label>
-		  </div> !-->
 		<span></span>
 		<span></span>
 		<span></span>
@@ -77,11 +72,8 @@
 		</form>
 	</div>	
 </div>
-	
-
 	<!-- footer -->
 	<%- include("partials/footer.ejs")%>
 	<!-- /footer -->
-
 </body>
 </html>
