@@ -27,7 +27,6 @@ const controlador = {
       include:[{
          association:"comentario", 
          include:"usuario",
-         where: {productosId: req.params.id}
       }]
    }
    db.Producto.findByPk(req.params.id, filtro).then(products=>{

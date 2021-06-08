@@ -29,7 +29,7 @@ module.exports = (sequelize, dataTypes) => {
     Producto.associate=(db)=>{
         Producto.hasMany(db.Comentario,{
             as: "comentario",
-            foreignKey:"usuarios_id",
+            foreignKey:"productos_id",
         })
     }
     return Producto; 
