@@ -22,5 +22,9 @@ router.get ('/edit/:id', controlador.productoEdit)
 router.post("/crear", upload.single("imagen"), controlador.productoCrear)
 router.post ('/comentar', controlador.commentAdd)
 router.post ('/edit', upload.single("imagen"), controlador.productoEditPost)
+router.get('/borrar/:id',controlador.productoBorrarvista )
+router.post ('/borrar',controlador.productDelete )
+
+
 
 module.exports = router

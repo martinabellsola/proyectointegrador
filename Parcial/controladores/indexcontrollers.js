@@ -73,6 +73,16 @@ const controlador = {
       res.redirect('../product/' + req.body.id)
    }).catch(err => {console.log(err)})
   }, 
+  productoBorrarvista:(req, res, next)=>{
+   db.Producto.findByPk(req.params.id).then(products=>{
+      res.render("product-borrar", { products: products} )
+   }).catch(err => {console.log(err)})
+  },
+  productDelete:(req, res, next)=>{
+     db.Producto.destroy({where:{ id:req.body.id}}).then(
+        res.redirect('/')
+     )
+  },
 
   commentAdd: (req, res, next)=>{
    db.Comentario.create({

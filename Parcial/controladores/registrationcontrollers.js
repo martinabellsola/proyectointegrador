@@ -66,7 +66,7 @@ const controlador = {
           fechaNacimiento: req.body.nacimiento,
         }).then (usuario =>{
             req.session.usuario = usuario.nombreUsuario,
-            req.session.id = usuario.id,
+            req.session.userId = usuario.id,
             res.redirect('../profile/' + usuario.id);
           })
         }
