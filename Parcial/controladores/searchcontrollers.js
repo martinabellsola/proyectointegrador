@@ -5,7 +5,7 @@ const controlador = {
   search: (req, res, next)=> {
     let filtro = {
       where: {
-          [Op.or]: [
+        [Op.or]: [
           {
             nombre: {
               [Op.like]: '%' + req.query.search + '%'
@@ -16,12 +16,12 @@ const controlador = {
               [Op.like]: '%' + req.query.search + '%'
             }
           }
-          ]
+        ]
       }
     }
     const filtro1= {
       include:[{
-         association:"Usuario", 
+        association:"Usuario", 
     }]
    }
     db.Producto.findAll(filtro).then(resultados=>{
