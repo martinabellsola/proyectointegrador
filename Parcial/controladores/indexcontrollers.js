@@ -6,12 +6,13 @@ const controlador = {
    let filtronuevos = {
       order: [
          ['createdAt', 'DESC'],
+         //¿createdAt?
       ],
      limit: 8,
    }
    let filtroviejos = {
       order: [
-         ['fechaCreacion', 'ASC'],
+         ['createdAt', 'ASC'],
       ],
       limit: 8,
    }     
@@ -30,8 +31,11 @@ const controlador = {
       }]
    }
    db.Producto.findByPk(req.params.id, filtro).then(products=>{
-      res.render("product", {products: products})
-   }).catch(err => {console.log(err)})
+   db.Producto.findByPk(products.usuarioId).then( usuarioproducto=>{  
+      res.render("product", {products: products, usuarioproducto:usuarioproducto })
+      console.log(products);
+      console.log('ES ESTE LOG');
+   })  }).catch(err => {console.log(err)}) 
  },
 
  productoAdd: (req, res, next)=>{
@@ -45,7 +49,6 @@ const controlador = {
       nombre: req.body.nombre,
       imagen : req.file.filename,
       descripcion: req.body.descripcion,
-      fechaCreacion: req.body.fecha,
       usuarioId:  req.session.userId
    }).then( productocreado=>{
       res.redirect('../product/' + productocreado.id)
