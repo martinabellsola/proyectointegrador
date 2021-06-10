@@ -79,9 +79,19 @@ const controlador = {
    }).catch(err => {console.log(err)})
   },
   productDelete:(req, res, next)=>{
-     db.Producto.destroy({where:{ id:req.body.id}}).then(
-        res.redirect('/')
-     )
+     let validacion = req.body.validacion
+     let errors = {}
+     if (validacion == "DELETE") {
+      db.Producto.destroy({where:{id:req.body.id}}).then(
+         res.redirect('/')
+      )
+     } else{
+         errors.message = "El valor ingresado no coincide con la palabra DELETE"
+         res.locals.errors = errors
+         db.Producto.findByPk(req.body.id).then(products=>{
+            res.render("product-borrar", { products: products} )
+         }).catch(err => {console.log(err)})
+     }
   },
 
   commentAdd: (req, res, next)=>{

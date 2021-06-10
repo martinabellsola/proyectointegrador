@@ -30,13 +30,15 @@
 		<div class="row">
 			<!-- Formulario -->
 				<div class="login-box">
+					<%if(locals.errors){%>
+						<p> <%= errors.message %></p>
+					<%}%>
 					<h2>Borrar Productos</h2>
 					<form action="/borrar" method="POST">
 					  <div class="user-box">
 						<input type="text" name="validacion" >
 						<label>Para confirmar que desea borrar el producto, ingrese DELETE:</label>
 					  </div>
-					  //falta la logica que confirme mediante DELETE
 						<span></span>
 						<span></span>
 						<span></span>
