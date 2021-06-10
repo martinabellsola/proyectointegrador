@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link width="" rel="shortcut icon" href="/images/logoHooves/logoSvg.svg" />
+	
+	<title> Hooves </title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/app.css">
+</head>
+<!-- Include Head -->
+
+<body>
+	<!-- Header -->
+	<%if(logueado == false){%>
+		<%-include("partials/header.ejs")%>
+		<%}else{%>
+		<%-include("partials/headerLogueado.ejs")%>
+		<%}%>
+	<!-- /Header -->
+
+	<!-- Agregar productos -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<!-- Formulario -->
+				<div class="login-box">
+					<h2>Agregar Productos</h2>
+					<form action="/edit" method="POST" enctype="multipart/form-data">
+					  <div class="user-box">
+						<input type="text" name="nombre" required value="<%=products.nombre%>">
+						<label>Nombre del producto:</label>
+					  </div>
+					  <div class="user-box">
+						<input type="text" name="descripcion" required value="<%=products.descripcion%>">
+						<label>Breve descripcion del producto:</label>
+					  </div>
+					  <div class="user-box">
+						<input type="file" name="imagen" accept="image/gif, image/png, image/jpeg" >
+						<label>Inserta una imagen:</label>
+					  </div>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+                        <input type="hidden" name="id" value="<%=products.id%>">
+						<input type="submit" value="enviar">
+					</form>
+				</div>				
+		</div>
+	</div>
+
+	<!-- footer -->
+	<%- include("partials/footer.ejs")%>
+	<!-- /footer -->
+</body>
+</html>

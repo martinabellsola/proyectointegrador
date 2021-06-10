@@ -43,7 +43,7 @@ const controlador = {
       res.render("product-add", { products: products} )
    }).catch(err => {console.log(err)})
  },
-
+ 
  productoCrear:(req, res, next)=>{
    db.Producto.create({
       nombre: req.body.nombre,
@@ -52,6 +52,25 @@ const controlador = {
       usuarioId:  req.session.userId
    }).then( productocreado=>{
       res.redirect('../product/' + productocreado.id)
+   }).catch(err => {console.log(err)})
+  }, 
+
+  productoEdit: (req, res, next)=>{
+   db.Producto.findByPk(req.params.id).then(products=>{
+      res.render("product-edit", { products: products} )
+   }).catch(err => {console.log(err)})
+  },
+
+  productoEditPost:(req, res, next)=>{
+   db.Producto.update({
+      nombre: req.body.nombre,
+      imagen : req.file.filename,
+      descripcion: req.body.descripcion,
+      usuarioId:  req.session.userId
+   },{
+      where: {id: req.body.id}
+   }).then(productocreado=>{
+      res.redirect('../product/' + req.body.id)
    }).catch(err => {console.log(err)})
   }, 
 
@@ -64,7 +83,6 @@ const controlador = {
       res.redirect('../product/' + req.body.productId)
    }).catch(err => {console.log(err)})
   }
-  // agregar con moment fecha de creación = hoy 
 }
 
 module.exports = controlador

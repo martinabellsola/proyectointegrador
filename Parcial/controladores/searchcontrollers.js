@@ -5,24 +5,30 @@ const controlador = {
   search: (req, res, next)=> {
     let filtro = {
       where: {
-        descripcion: {
-            [Op.like]: '%' + req.query.search + '%'
-        },
-        nombre: {
-          [Op.like]: '%' + req.query.search + '%'
-      }
+          [Op.or]: [
+          {
+            nombre: {
+              [Op.like]: '%' + req.query.search + '%'
+            }
+          },
+          {
+            descripcion: {
+              [Op.like]: '%' + req.query.search + '%'
+            }
+          }
+          ]
       }
     }
     const filtro1= {
       include:[{
          association:"Usuario", 
-      }]
+    }]
    }
-    db.Producto.findAll(filtro, filtro1).then(resultados=>{
+    db.Producto.findAll(filtro).then(resultados=>{
     res.render("search-results", {products: resultados })
     console.log('ESTEFILTRO');
-    console.log(filtro1);
-    })
+    console.log( resultados );
+    }).catch(err => {console.log(err)})
   }
 }
 module.exports = controlador

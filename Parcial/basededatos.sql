@@ -6,7 +6,7 @@ nombreusuario varchar(30) not null,
 contraseña varchar (200) not null,
 mail varchar (120) not null,
 fechaNacimiento date not null,
-imagen varchar(120) not null default"/images/usuarios/fotoJuan.jpg",
+imagen varchar(120) not null default "/images/usuarios/default.jpg",
 cantidadDeSeguidores int not null default"0",
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP

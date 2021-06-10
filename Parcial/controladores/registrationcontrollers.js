@@ -28,7 +28,7 @@ const controlador = {
 
       if (req.body.correo == '') {
         errors.message = "Porfavor es necesario que ingrese un mail"
-        res.locals.errors=errors
+        res.locals.errors = errors
         return res.render("register")
       }
     

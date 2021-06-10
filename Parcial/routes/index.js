@@ -18,7 +18,9 @@ var upload = multer({
 router.get ('/', controlador.index)
 router.get ('/product/:id', controlador.producto)
 router.get ('/add', controlador.productoAdd)
+router.get ('/edit/:id', controlador.productoEdit)
 router.post("/crear", upload.single("imagen"), controlador.productoCrear)
 router.post ('/comentar', controlador.commentAdd)
+router.post ('/edit', upload.single("imagen"), controlador.productoEditPost)
 
 module.exports = router
