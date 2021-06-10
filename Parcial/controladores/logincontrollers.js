@@ -7,13 +7,26 @@ const controlador = {
   },
 
   validacion:(req, res, next)=>{
+    let errors = {}
+
     const filtro = {
       where: {nombreUsuario: req.body.nombreUsuario }
     }
     db.Usuario.findOne(filtro).then(usuario=>{
-     console.log(req.body.password)  
-     console.log(usuario.contraseña)
-     if (bcrypt.compareSync(req.body.password, usuario.contraseña)) {
+     
+      if (usuario) {
+        usuarioexistente = usuario.nombreUsuario
+      }  else{
+        usuarioexistente = null
+      } 
+
+      if (usuarioexistente == null) {
+        errors.message = "El nombre de usuario que ingresó no existe"
+        res.locals.errors=errors
+        return res.render("login")
+      }
+
+     else if (bcrypt.compareSync(req.body.password, usuario.contraseña)) {
          req.session.usuario = usuario.nombreUsuario,
          req.session.userId = usuario.id
 
@@ -22,7 +35,9 @@ const controlador = {
           }
           res.redirect('/')
         } else{
-          res.redirect('/register')
+          errors.message = 'la contraseña que ha ingresado es incorrecta'
+          res.locals.errors=errors
+          res.render('login')
         }
     }).catch(err => {console.log(err)})
   },
@@ -33,5 +48,5 @@ const controlador = {
     res.redirect("/")
   }
 }
-
+ 
 module.exports = controlador

@@ -5,7 +5,7 @@ const controlador = {
  index: (req, res, next)=>{
    let filtronuevos = {
       order: [
-         ['fechaCreacion', 'DESC'],
+         ['createdAt', 'DESC'],
       ],
      limit: 8,
    }

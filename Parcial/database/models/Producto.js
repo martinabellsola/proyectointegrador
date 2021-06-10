@@ -15,16 +15,12 @@ module.exports = (sequelize, dataTypes) => {
         descripcion: {
             type: dataTypes.STRING
         },
-        fechaCreacion: {
-            type: dataTypes.DATE
-        },
         usuarioId: {
             type: dataTypes.INTEGER, 
             field: "usuarios_id"
         },
     }, {
         tableName: "productos", 
-        timestamps: false
     });
     Producto.associate=(db)=>{
         Producto.hasMany(db.Comentario,{

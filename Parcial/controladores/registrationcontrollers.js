@@ -13,21 +13,37 @@ const controlador = {
     let errors = {}
 
     db.Usuario.findOne({where:{mail: req.body.correo}}).then(usuario=>{ 
-      
+     if (usuario) {
       correoexistente = usuario.mail
-      
+     }  else{
+      correoexistente = null
+     }
+
+    db.Usuario.findOne({where:{nombreUsuario: req.body.usuario}}).then(nombreusuario=>{ 
+    if (nombreusuario) {
+      usuarioexistente = nombreusuario.nombreUsuario
+    }  else{
+      usuarioexistente = null
+    }
+
       if (req.body.correo == '') {
         errors.message = "Porfavor es necesario que ingrese un mail"
         res.locals.errors=errors
         return res.render("register")
       }
     
-      else if (correoexistente) {
+      else if (correoexistente != null) {
           errors.message = "El correo que ingresó ya ha sido registrado, porfavor ingrese otro"
           res.locals.errors=errors
           return res.render("register")
       }
-      
+    
+      else if (usuarioexistente != null) {
+        errors.message = "El nombre de usuario que ingresó ya ha sido registrado, porfavor ingrese otro"
+        res.locals.errors=errors
+        return res.render("register")
+      }
+
       else if (req.body.contra == '') {
         errors.message = "Porfavor es necesario que ingrese una contraseña"
         res.locals.errors = errors
@@ -54,8 +70,9 @@ const controlador = {
             res.redirect('../profile/' + usuario.id);
           })
         }
-      });
+      }); })
     }
   }
+
 
 module.exports = controlador

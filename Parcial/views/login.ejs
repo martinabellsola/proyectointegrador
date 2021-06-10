@@ -28,6 +28,11 @@
 	<!-- Ingresar -->
 	<div class="container products-wrapper">
 		
+		<%if(locals.errors){%>
+			<p> <%= errors.message %></p>
+			<% console.log(locals.errors) %>
+		<%}%>
+	
 			<div class="col-12">
 				<h2 class="products-title">Ingresar</h2>
 			</div>

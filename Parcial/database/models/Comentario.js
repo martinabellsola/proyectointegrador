@@ -9,9 +9,6 @@ module.exports = (sequelize, dataTypes) => {
         comentario: {
             type: dataTypes.STRING
         },
-        fechaCreacion: {
-            type: dataTypes.DATE
-        },
         usuarioId: {
             type: dataTypes.INTEGER, 
             field: "usuarios_id"
@@ -22,7 +19,6 @@ module.exports = (sequelize, dataTypes) => {
         },
     }, {
         tableName: "comentarios", 
-        timestamps: false
     });
     Comentario.associate=(db)=>{
         Comentario.belongsTo(db.Usuario,{
