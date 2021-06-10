@@ -31,9 +31,9 @@ const controlador = {
       }]
    }
    db.Producto.findByPk(req.params.id, filtro).then(products=>{
-   db.Producto.findByPk(products.usuarioId).then( usuarioproducto=>{  
+   db.Usuario.findByPk(products.usuarioId).then( usuarioproducto=>{  
       res.render("product", {products: products, usuarioproducto:usuarioproducto })
-      console.log(products);
+      console.log(usuarioproducto);
       console.log('ES ESTE LOG');
    })  }).catch(err => {console.log(err)}) 
  },

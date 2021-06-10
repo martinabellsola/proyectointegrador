@@ -13,8 +13,15 @@ const controlador = {
       }
       }
     }
-    db.Producto.findAll(filtro).then(resultados=>{
-         res.render("search-results", {products: resultados})
+    const filtro1= {
+      include:[{
+         association:"Usuario", 
+      }]
+   }
+    db.Producto.findAll(filtro, filtro1).then(resultados=>{
+    res.render("search-results", {products: resultados })
+    console.log('ESTEFILTRO');
+    console.log(filtro1);
     })
   }
 }
