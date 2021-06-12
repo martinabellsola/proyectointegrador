@@ -8,34 +8,46 @@ const controlador = {
          ['createdAt', 'DESC'],
          //¿createdAt?
       ],
-     limit: 8,
+      limit: 8,
+      include:[
+         {  
+            association: "usuario",  
+         }, 
+      ],
    }
    let filtroviejos = {
       order: [
          ['createdAt', 'ASC'],
       ],
       limit: 8,
+      include:[
+         {  
+            association: "usuario",  
+         }, 
+      ],
    }     
    db.Producto.findAll(filtronuevos).then(productosnuevos=>{ 
    db.Producto.findAll(filtroviejos).then(productosviejos=>{
-      res.render("index", { products: productosnuevos, productsviejos:productosviejos})
+      res.render("index", {products: productosnuevos, productsviejos:productosviejos})
       } )
    }).catch(err => {console.log(err)})
  },
 
  producto: (req, res, next)=>{
    const filtro= {
-      include:[{
-         association:"comentario", 
-         include:"usuario",
-      }]
+      include:[
+         {  
+            association: "comentario",
+            include: "usuario"
+         }, 
+         {  
+            association: "usuario",  
+         }, 
+      ],
    }
    db.Producto.findByPk(req.params.id, filtro).then(products=>{
-   db.Usuario.findByPk(products.usuarioId).then( usuarioproducto=>{  
-      res.render("product", {products: products, usuarioproducto:usuarioproducto })
-      console.log(usuarioproducto);
-      console.log('ES ESTE LOG');
-   })  }).catch(err => {console.log(err)}) 
+      res.render("product", {products: products})
+   }).catch(err => {console.log(err)}) 
  },
 
  productoAdd: (req, res, next)=>{
@@ -50,7 +62,7 @@ const controlador = {
       imagen : req.file.filename,
       descripcion: req.body.descripcion,
       usuarioId:  req.session.userId
-   }).then( productocreado=>{
+   }).then(productocreado=>{
       res.redirect('../product/' + productocreado.id)
    }).catch(err => {console.log(err)})
   }, 
@@ -73,36 +85,46 @@ const controlador = {
       res.redirect('../product/' + req.body.id)
    }).catch(err => {console.log(err)})
   }, 
+
   productoBorrarvista:(req, res, next)=>{
    db.Producto.findByPk(req.params.id).then(products=>{
       res.render("product-borrar", { products: products} )
    }).catch(err => {console.log(err)})
   },
+
   productDelete:(req, res, next)=>{
-     let validacion = req.body.validacion
-     let errors = {}
-     if (validacion == "DELETE") {
+   let validacion = req.body.validacion
+   let errors = {}
+   if (validacion == "DELETE") {
       db.Producto.destroy({where:{id:req.body.id}}).then(
          res.redirect('/')
-      )
-     } else{
-         errors.message = "El valor ingresado no coincide con la palabra DELETE"
-         res.locals.errors = errors
-         db.Producto.findByPk(req.body.id).then(products=>{
-            res.render("product-borrar", { products: products} )
-         }).catch(err => {console.log(err)})
-     }
-  },
+      )} else{
+            errors.message = "El valor ingresado no coincide con la palabra DELETE"
+            res.locals.errors = errors
+            res.redirect('/borrar/' + req.body.id)
+            db.Producto.findByPk(req.body.id).then(products=>{
+               res.render("product-borrar", { products: products} )
+            }).catch(err => {console.log(err)})
+         }
+   },
 
   commentAdd: (req, res, next)=>{
-   db.Comentario.create({
-      comentario: req.body.comentario,
-      usuarioId: req.session.userId,
-      productosId: req.body.productId,
-   }).then(comentarioCreado =>{
-      res.redirect('../product/' + req.body.productId)
-   }).catch(err => {console.log(err)})
-  }
+   let errors = {}
+   if (req.body.usuarioId == res.locals.usuario) {
+      db.Comentario.create({
+         comentario: req.body.comentario,
+         usuarioId: req.session.userId,
+         productosId: req.body.productId,
+      }).then(comentarioCreado =>{
+         res.redirect('../product/' + req.body.productId)
+      }).catch(err => {console.log(err)})
+   } else{
+      errors.message = "Debes de registrarte para comentar"
+      res.locals.errors = errors
+      res.redirect("../register")
+   }
+   }, 
+      
 }
 
 module.exports = controlador

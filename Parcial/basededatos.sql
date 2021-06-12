@@ -6,7 +6,7 @@ nombreusuario varchar(30) not null,
 contraseña varchar (200) not null,
 mail varchar (120) not null,
 fechaNacimiento date not null,
-imagen varchar(120) not null default "/images/usuarios/default.jpg",
+imagen varchar(120) not null default "default.jpg",
 cantidadDeSeguidores int not null default"0",
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -33,8 +33,6 @@ foreign key (productos_id) references productos(id),
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-
-select * from producto;
 
 insert into usuarios(id, nombre, apellido, nombreusuario, contraseña, mail, fechaNacimiento, imagen, cantidadDeSeguidores)
 values(default,"Juan","Lopez","JuanLopez","password","juanlopez@gmail.com", "1970/04/10", "fotoJuan.jpg", 1200), 
@@ -115,4 +113,3 @@ values(default,"¡¡Este es mi modelo de zapatillas favoritas en el mercado!! le
 (default,"No me gustan, estan pasadas de moda",  5, 10),
 (default,"¡Muy bonitas!", 6, 10); 
 
-select * from productos;

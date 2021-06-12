@@ -43,36 +43,48 @@
 		</div>
 		<div class="product-detail">
 			<div class="row">
-					<article class="col-12 col-lg-8 product-detail-info">
-						<img src= "/images/products/<%=products.imagen%>" alt="<%= products.nombre%>">
-						<hr>
-						<p class="product-detail-description"><a href="/profile/<%=usuarioproducto.id%>"><strong>Ver más productos de <%=usuarioproducto.nombreUsuario%></strong></a></p>
-						<p class="product-detail-description">
-							<%= products.descripcion%></p>
-					</article>
+				<article class="col-12 col-lg-8 product-detail-info">
+					<img src= "/images/products/<%=products.imagen%>" alt="<%= products.nombre%>">
+					<hr>
+					<p class="product-detail-description"><a href="/profile/<%=products.usuario.id%>"><strong>Ver más productos de <%=products.usuario.nombreUsuario%></strong></a></p>
+					<p class="product-detail-description"><%= products.descripcion%></p>
+				</article>
 
 			<!-- Comentarios -->
 			<div class="col-12 col-lg-4">
 				<section class="comments">
-					<% for (let index = 0; index < products.comentario.length; index++) { 
+					<%if(products.comentario.length == 0){%>
+						<div class="data">
+							<p class="user"> 
+								Todavía no hay comentario, animate se el primero en comentar!
+							</p>	
+						</div>
+					<% } else{ %>
+						<% for (let index = 0; index < products.comentario.length; index++) { 
 						let producto = products.comentario[index] %>
 						<article>
 							<img src="/images/usuarios/<%=producto.usuario.imagen%>" alt="">
 							 <div class="data">
-								 <p class="user">
-								 <strong> 
-									 <a href="/profile/<%=producto.usuario.id%>"><%= producto.usuario.nombreUsuario%></a> 
+								 <p class="user"> 
+									<strong> 
+										<a href="/profile/<%=producto.usuario.id%>"> <%=producto.usuario.nombre%> <%=producto.usuario.apellido%></a> 
 									</strong>
-							       <%=producto.comentario%></p>
+								<%=producto.comentario%> 
 							</div>
 						</article>
 						<% }%>
+					<% }%>
 				</section>
 					<form class="form comentario" action="/comentar" method="POST">
 						<input class="form-input" type="text" value="" name="comentario" placeholder="Agregar comentario">
 						<input type="hidden" name="productId" value="<%= products.id%>">
+						<input type="hidden" name="usuarioId" value="<%=usuario%>">
 						<hr>
+						<%if(logueado == true){%>
 						<button type="submit" class="buy-now-button" >AGREGAR COMENTARIO</button>
+						<%}else{%>
+						<button type="submit" class="buy-now-button" >REGISTRATE PARA COMENTAR!</button>
+						<%}%>
 					</form>
 					<hr>
 			</div>

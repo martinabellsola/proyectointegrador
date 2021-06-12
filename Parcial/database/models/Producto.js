@@ -26,9 +26,9 @@ module.exports = (sequelize, dataTypes) => {
         Producto.hasMany(db.Comentario,{
             as: "comentario",
             foreignKey:"productos_id",
-        })
+        }), 
         Producto.belongsTo(db.Usuario,{
-            as: "Usuario",
+            as: "usuario",
             foreignKey:"usuarios_id",
         })
     }

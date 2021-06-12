@@ -3,7 +3,7 @@ const Op = db.Sequelize.Op;
 
 const controlador = {
   search: (req, res, next)=> {
-    let filtro = {
+    const filtro = {
       where: {
         [Op.or]: [
           {
@@ -17,17 +17,15 @@ const controlador = {
             }
           }
         ]
-      }
+      }, 
+      include:[
+         {  
+            association: "usuario",  
+         }, 
+      ],
     }
-    const filtro1= {
-      include:[{
-        association:"Usuario", 
-    }]
-   }
     db.Producto.findAll(filtro).then(resultados=>{
-    res.render("search-results", {products: resultados })
-    console.log('ESTEFILTRO');
-    console.log( resultados );
+      res.render("search-results", {products: resultados})
     }).catch(err => {console.log(err)})
   }
 }

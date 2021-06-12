@@ -33,9 +33,9 @@ const controlador = {
       }
     
       else if (correoexistente != null) {
-          errors.message = "El correo que ingresó ya ha sido registrado, porfavor ingrese otro"
-          res.locals.errors=errors
-          return res.render("register")
+        errors.message = "El correo que ingresó ya ha sido registrado, porfavor ingrese otro"
+        res.locals.errors=errors
+        return res.render("register")
       }
     
       else if (usuarioexistente != null) {

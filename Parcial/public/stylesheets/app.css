@@ -67,6 +67,15 @@ hr {
   border-bottom: solid 1px var(--light-gray);
 }
 
+a.especial{
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+a.especial:hover{
+  color: #666393;
+}
 
 /*====== Main Header ======*/
 .main-header {
@@ -337,7 +346,7 @@ a.main-header_credit-link:hover {
   color: var(--gray);
   padding: 15px 0;
 }
- 
+
 /*====== Product Detail ======*/
 .product-detail {
   background-color: #ffffff;

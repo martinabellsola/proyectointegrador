@@ -59,7 +59,6 @@ app.use(function(req, res, next) {
       usuario: null
     }
   }
-  console.log("APPPP")
 	return next();
 }); 
 
