@@ -20,7 +20,7 @@
 	<!-- Header -->
 	<%if(logueado == false){%>
 		<%-include("partials/header.ejs")%>
-		<%}else{%>
+	<%}else{%>
 		<%-include("partials/headerLogueado.ejs")%>
 		<%}%>
 	<!-- /Header -->
@@ -40,7 +40,7 @@
 						<%if(usuarioId == usuarios.id){%>
 						<form action="../profile/edit/<%=usuarios.id%>" method="GET">
 							<input type="hidden" name="id" value="<%=usuarios.id%>">
-							<input type="submit" value="Modificar">
+							<input type="submit" class="" value="Modificar">
 					  	</form>
 						<%}%>
 					<%}%>

@@ -20,21 +20,20 @@
 	<!-- Header -->
 	<%if(logueado == false){%>
 		<%-include("partials/header.ejs")%>
-		<%}else{%>
+	<%}else{%>
 		<%-include("partials/headerLogueado.ejs")%>
-		<%}%>
+	<%}%>
 	<!-- /Header -->
 
 	<!-- Agregar productos -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<!-- Formulario -->
-			<%if(locals.errors){%>
-				<p><%=errors.message%></p>
-		    <%}%>
 				<div class="login-box">
 					<h2>Borrar Productos</h2>
-					
+					<%if(locals.errors){%>
+						<p><%=errors.message%></p>
+					<%}%>
 					<form action="/borrar" method="POST">
 					  <div class="user-box">
 						<input type="text" name="validacion" >

@@ -1,5 +1,5 @@
 create table usuarios(
-id int primary key auto_increment,
+id int unsigned  primary key auto_increment,
 nombre varchar(20) not null,
 apellido varchar (20) not null,
 nombreusuario varchar(30) not null,
@@ -7,29 +7,29 @@ contraseña varchar (200) not null,
 mail varchar (120) not null,
 fechaNacimiento date not null,
 imagen varchar(120) not null default "default.jpg",
-cantidadDeSeguidores int not null default"0",
+cantidadDeSeguidores int not null default "0",
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 create table productos(
-id int primary key auto_increment,
+id int unsigned primary key auto_increment,
 nombre varchar(100) not null,
 imagen varchar(120) not null,
 descripcion varchar(1000) not null,
-usuarios_id int,
-foreign key (usuarios_id) references usuarios(id),
+usuarios_id int unsigned,
+foreign key (usuarios_id) references usuarios(id) ON DELETE CASCADE,
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 create table comentarios(
-id int primary key auto_increment,
+id int unsigned  primary key auto_increment,
 comentario varchar(1000) not null,
-usuarios_id int,
-foreign key (usuarios_id) references usuarios(id),
-productos_id int,
-foreign key (productos_id) references productos(id),
+usuarios_id int unsigned,
+foreign key (usuarios_id) references usuarios(id) ON DELETE CASCADE,
+productos_id int unsigned,
+foreign key (productos_id) references productos(id) ON DELETE CASCADE,
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

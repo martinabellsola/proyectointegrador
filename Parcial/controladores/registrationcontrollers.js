@@ -20,11 +20,11 @@ const controlador = {
      }
 
     db.Usuario.findOne({where:{nombreUsuario: req.body.usuario}}).then(nombreusuario=>{ 
-    if (nombreusuario) {
-      usuarioexistente = nombreusuario.nombreUsuario
-    }  else{
-      usuarioexistente = null
-    }
+      if (nombreusuario) {
+        usuarioexistente = nombreusuario.nombreUsuario
+      }  else{
+        usuarioexistente = null
+      }
 
       if (req.body.correo == '') {
         errors.message = "Porfavor es necesario que ingrese un mail"
