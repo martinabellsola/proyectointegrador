@@ -87,7 +87,9 @@ const controlador = {
   }, 
 
   productoBorrarvista:(req, res, next)=>{
-   db.Producto.findByPk(req.params.id).then(products=>{
+    let filtro={include:[{association:"usuario"}]}
+    
+   db.Producto.findByPk(req.params.id, filtro).then(products=>{
       res.render("product-borrar", { products: products} )
    }).catch(err => {console.log(err)})
   },
@@ -95,17 +97,28 @@ const controlador = {
   productDelete:(req, res, next)=>{
    let validacion = req.body.validacion
    let errors = {}
-   if (validacion == "DELETE") {
+   if (res.locals.usuarioId==req.body.usuarioid) {
+      if (validacion == "DELETE") {
       db.Producto.destroy({where:{id:req.body.id}}).then(
-         res.redirect('/')
-      )} else{
+         res.redirect('/') )
+      } else{
             errors.message = "El valor ingresado no coincide con la palabra DELETE"
             res.locals.errors = errors
-            res.redirect('/borrar/' + req.body.id)
-            db.Producto.findByPk(req.body.id).then(products=>{
+            console.log(errors)
+            const filtro= {
+               include:[
+                  {association: "usuario" } ]}
+           
+            db.Producto.findByPk(req.body.id, filtro).then(products=>{
                res.render("product-borrar", { products: products} )
             }).catch(err => {console.log(err)})
          }
+   }else{ 
+   res.redirect('/')
+
+   }
+   
+     
    },
 
   commentAdd: (req, res, next)=>{

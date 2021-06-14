@@ -29,7 +29,11 @@
 	<div class="container products-wrapper">
 			
 		<h2 class="products-title">Editar perfil</h2>
+	   <%if(locals.errors){%>
 	
+			<p><%= errors.message %></p>
+			<% console.log(locals.errors) %>
+		<%}%>
 		<div class="login-box">
 			<h2>¡Edita tu perfil a tu gusto!</h2>
 			<form action="../edit" method="POST" enctype="multipart/form-data">
@@ -50,7 +54,7 @@
 					<label>Nueva direccion de correo:</label>
 				</div>
 				<div class="user-box">
-					<input type="password" name="contra" value="<%=usuarios.contraseña%>">
+					<input type="password" name="contra" >
 					<label>Nueva contraseña:</label>
 				</div>
 				<div class="user-box">

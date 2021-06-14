@@ -29,11 +29,12 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<!-- Formulario -->
+			<%if(locals.errors){%>
+				<p><%=errors.message%></p>
+		    <%}%>
 				<div class="login-box">
-					<%if(locals.errors){%>
-						<p> <%= errors.message %></p>
-					<%}%>
 					<h2>Borrar Productos</h2>
+					
 					<form action="/borrar" method="POST">
 					  <div class="user-box">
 						<input type="text" name="validacion" >
@@ -44,6 +45,7 @@
 						<span></span>
 						<span></span>
                         <input type="hidden" name="id" value="<%=products.id%>">
+						<input type="hidden" name="usuarioid" value="<%=products.usuario.id%>">
 						<input type="submit" value="confirmar">
 					</form>
 				</div>				
