@@ -9,14 +9,12 @@ const controlador = {
     db.Usuario.findByPk(req.params.id, filtro).then(usuario=>{
       res.render("profile", {usuarios:usuario, producto:usuario.producto.length, comentario:usuario.comentario.length})
     }).catch(err => {console.log(err)})
-   
   },
 
   edit: (req,res,next)=>{
     db.Usuario.findByPk(req.params.id).then(usuario=>{
        res.render("profile-edit", {usuarios:usuario,})
     }).catch(err => {console.log(err)})
-  
   },
 
   editProfile: (req,res,next)=>{
@@ -63,14 +61,18 @@ const controlador = {
       db.Usuario.findByPk(req.body.id).then(usuario=>{
         res.render("profile-edit", {usuarios:usuario,})
       }).catch(err => {console.log(err)})
-         
-
     }   
+  },
+
+  eliminarPerfil:(req, res, next)=>{
+    if (req.body.id == res.locals.usuarioId) {
+      db.Usuario.destroy({where:{id:req.body.id}}).then( 
+        req.session.destroy(),
+        res.clearCookie("userId"),
+        res.redirect('/')
+      )}
   }
 
-   
-    
-     
 }
 
 module.exports = controlador

@@ -12,6 +12,9 @@ const controlador = {
          {  
             association: "usuario",  
          }, 
+         {  
+            association: "comentario",  
+         }, 
       ],
    }
    let filtroviejos = {
@@ -28,7 +31,7 @@ const controlador = {
    db.Producto.findAll(filtronuevos).then(productosnuevos=>{ 
    db.Producto.findAll(filtroviejos).then(productosviejos=>{
       res.render("index", {products: productosnuevos, productsviejos:productosviejos})
-      } )
+   } )
    }).catch(err => {console.log(err)})
  },
 
@@ -37,15 +40,15 @@ const controlador = {
       include:[
          {  
             association: "comentario",
-            order: [
-               ["createdAt", "ASC"]
-            ],
             include: "usuario"
          }, 
          {  
             association: "usuario",  
          }, 
       ],
+      order: [
+         [ "comentario", "createdAt", "DESC"]
+      ], 
    }
    db.Producto.findByPk(req.params.id, filtro).then(products=>{
       res.render("product", {products: products})
@@ -110,7 +113,6 @@ const controlador = {
    }   
   },
    
-
   productoBorrarvista:(req, res, next)=>{
    let filtro = {include:[{association:"usuario"}]}
    db.Producto.findByPk(req.params.id, filtro).then(products=>{
@@ -158,7 +160,17 @@ const controlador = {
       res.redirect("../register")
    }
    },   
-}
 
+   borrarComentario: (req, res, next)=>{
+    if (req.body.usuarioid == res.locals.usuarioId) {
+      db.Comentario.destroy({where:{id:req.body.comentarioid}}).then(
+         res.redirect('/product/'+ req.body.productid) )
+    }else{
+      errors.message = "Debe ser tu comentario para poder borrarlo"
+      res.locals.errors = errors
+      res.redirect("/")
+    }
+   }
+}
 module.exports = controlador
 

@@ -31,7 +31,7 @@ const controlador = {
          req.session.userId = usuario.id
 
           if (req.body.rememberMe) {
-            res.cookie('userId', usuario.id, {maxAge:2000*60*5})
+            res.cookie('userId', usuario.id, {maxAge:30*24*60*60*1000})
           }
           res.redirect('/')
         } else{
@@ -50,3 +50,4 @@ const controlador = {
 }
  
 module.exports = controlador
+

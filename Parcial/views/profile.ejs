@@ -41,7 +41,11 @@
 						<form action="../profile/edit/<%=usuarios.id%>" method="GET">
 							<input type="hidden" name="id" value="<%=usuarios.id%>">
 							<input type="submit" class="" value="Modificar">
-					  	</form>
+						</form>
+						<form action="../profile/borrarPerfil" method="POST">
+							<input type="hidden" value="<%=usuarios.id%>" name="id">
+							<input type="submit" value="Eliminar perfil" >
+						</form>
 						<%}%>
 					<%}%>
 					</h1>

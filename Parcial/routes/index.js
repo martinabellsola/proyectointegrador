@@ -24,6 +24,7 @@ router.post ('/comentar', controlador.commentAdd)
 router.post ('/edit', upload.single("imagen"), controlador.productoEditPost)
 router.get('/borrar/:id',controlador.productoBorrarvista )
 router.post ('/borrar',controlador.productDelete)
+router.post ('/borrarComentario', controlador.borrarComentario)
 
 
 

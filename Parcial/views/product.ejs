@@ -70,6 +70,15 @@
 										<a href="/profile/<%=producto.usuario.id%>"> <%=producto.usuario.nombre%> <%=producto.usuario.apellido%></a> 
 									</strong>
 								<%=producto.comentario%> 
+								<% 	if ( usuarioId == producto.usuario.id ) { %>
+									<form action="/borrarComentario" method="POST">
+										<input type="submit" value="borrar">
+										<input type="hidden" value="<%=producto.usuario.id%>" name="usuarioid">
+										<input type="hidden" value="<%=producto.id%>" name="comentarioid">
+										<input type="hidden" value="<%= products.id%>" name="productid">
+									   </form>
+								<%}%>
+
 							</div>
 						</article>
 						<% }%>
