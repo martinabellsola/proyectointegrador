@@ -37,6 +37,9 @@ const controlador = {
       include:[
          {  
             association: "comentario",
+            order: [
+               ["createdAt", "ASC"]
+            ],
             include: "usuario"
          }, 
          {  
