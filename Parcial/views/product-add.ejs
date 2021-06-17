@@ -11,10 +11,12 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
-<!-- Include Head -->
+<!-- /Include Head -->
+
 
 <body>
 	<!-- Header -->
@@ -30,9 +32,16 @@
 			<!-- Formulario -->
 				<div class="login-box">
 					<h2>Agregar Productos</h2>
-					<%if(locals.errors){%>
-						<p><%= errors.message %></p>
-					<%}%>
+
+					<% if(locals.errors) { %>
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<p class="error"><%= errors.message %></p>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					<% } %>
+
 					<form action="/crear" method="POST" enctype="multipart/form-data">
 					  <div class="user-box">
 						<input type="text" name="nombre" required>
@@ -59,5 +68,7 @@
 	<!-- footer -->
 	<%- include("partials/footer.ejs")%>
 	<!-- /footer -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>

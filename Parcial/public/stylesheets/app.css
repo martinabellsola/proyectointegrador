@@ -412,6 +412,13 @@ a.main-header_credit-link:hover {
   margin-right: 15px;
 }
 
+button.borrarComent {
+  border: none; 
+  background-color: rgba(239, 239, 239,0);
+  width: 15px;
+}
+
+
 .actions-list p {
   color: var(--gray);
   font-size: 1.7em;
@@ -643,7 +650,27 @@ html {
   font-size: 1.4em;
 }
 
-
+form.formBorrar{
+  display: inline;
+}
+form.formBorrar button.borrarComent{
+  display: inline;
+  padding: 0%;
+  margin-top: 0%;
+}
+form.formBorrar button.borrarComent i.fa{
+  font-size: 150%;
+}
+ 
+div.data p.user{
+  margin-bottom: 0%;
+}
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  font-size: 12px;
+}
 /*====== Profile ======*/
 .info-usuario{
   border-bottom: 1px solid #ccc;

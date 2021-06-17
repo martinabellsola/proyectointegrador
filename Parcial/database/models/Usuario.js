@@ -1,5 +1,3 @@
-const { any } = require("sequelize/types/lib/operators");
-
 module.exports = (sequelize, dataTypes) => {
 
     const Usuario = sequelize.define('Usuario' , { 
@@ -45,16 +43,13 @@ module.exports = (sequelize, dataTypes) => {
         Usuario.hasMany(db.Producto,{
             as: "producto",
             foreignKey:"usuarios_id",
-        }),
-        Usuario.belongsTo(db.Seguidor,{
-            as: "Seguido",
-            foreignKey:"seguido_id",
-        }),
-        Usuario.belongsTo(db.Seguidor,{
-            as: "Seguidor",
-            foreignKey:"seguidor_id",
+        }), 
+        Usuario.belongsToMany(db.Usuario,{
+            as: "seguidos", 
+            through: 'seguidores', 
+            foreignKey: "seguido_id", 
+            otherKey: "seguidores_id", 
         })
-
     }
     return Usuario; 
 }; 

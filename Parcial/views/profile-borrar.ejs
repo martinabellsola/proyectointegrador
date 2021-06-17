@@ -17,6 +17,7 @@
 </head>
 <!-- /Include Head -->
 
+
 <body>
 	<!-- Header -->
 	<%if(logueado == false){%>
@@ -26,58 +27,38 @@
 	<%}%>
 	<!-- /Header -->
 
-	<!-- Formulario Registrarse -->
-	<!-- Formulario -->
+	<!-- Agregar productos -->
 	<div class="container products-wrapper">
-		
-	<h2 class="products-title">Registrate</h2>
+		<div class="row">
+			<!-- Formulario -->
+				<div class="login-box">
+					<h2>Borrar Perfil</h2>
 
-	<% if(locals.errors) { %>
-		<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			<p class="error"><%= errors.message %></p>
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
+					<% if(locals.errors) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p class="error"><%= errors.message %></p>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <% } %>
+                
+					<form action="/profile/borrarPerfil" method="POST">
+					  <div class="user-box">
+						<input type="text" name="validacion" >
+						<label>Para confirmar que desea borrar su perfil, ingrese DELETE:</label>
+					  </div>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+                        <input type="hidden" name="id" value="<%=usuario.id%>">
+						<input type="submit" value="confirmar">
+					</form>
+				</div>				
 		</div>
-	<% } %>
+	</div>
 
-	<div class="login-box">
-		<h2>¡Registrate para pertenecer a la comunidad hooves!</h2>
-
-		<form action="/register" method="POST" class="needs-validation">
-		  <div class="user-box">
-			<input type="text" name="nombre" required="">
-			<label>Nombre:</label>
-		  </div>
-		  <div class="user-box">
-			<input type="text" name="apellido" required="">
-			<label>Apellido:</label>
-		  </div>
-		  <div class="user-box">
-			<input type="text" name="usuario" required="">
-			<label>Usuario:</label>
-		  </div>
-		  <div class="user-box">
-			<input type="text" name="nacimiento" required="" placeholder="AAAA/MM/DD">
-			<label>Fecha de nacimiento:</label>
-		  </div>
-		  
-		  <div class="user-box">
-			<input type="text" name="correo" placeholder="usuario@gmail.com">
-			<label>Direccion de correo:</label>
-		  </div>
-		  <div class="user-box">
-			<input type="password" name="contra" >
-			<label>Contraseña:</label>
-		  </div>
-		<span></span>
-		<span></span>
-		<span></span>
-		<span></span>
-		<input type="submit" value="enviar">
-		</form>
-	</div>	
-</div>
 	<!-- footer -->
 	<%- include("partials/footer.ejs")%>
 	<!-- /footer -->

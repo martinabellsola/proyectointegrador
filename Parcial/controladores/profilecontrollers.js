@@ -4,7 +4,15 @@ const bcrypt = require('bcryptjs')
 const controlador = {
   profile: (req, res, next)=>{
     let filtro = {
-      include: [{association:"producto"}, {association:"comentario"}]
+      include:[
+        {  
+          association: "producto",  
+          include: "comentario"
+        }, 
+        {  
+          association: "comentario",  
+        }, 
+     ],
     }
     db.Usuario.findByPk(req.params.id, filtro).then(usuario=>{
       res.render("profile", {usuarios:usuario, producto:usuario.producto.length, comentario:usuario.comentario.length})
@@ -64,14 +72,32 @@ const controlador = {
     }   
   },
 
-  eliminarPerfil:(req, res, next)=>{
-    if (req.body.id == res.locals.usuarioId) {
-      db.Usuario.destroy({where:{id:req.body.id}}).then( 
-        req.session.destroy(),
-        res.clearCookie("userId"),
-        res.redirect('/')
-      )}
-  }
+  eliminarPerfilVista:(req, res, next)=>{
+    db.Usuario.findByPk(req.params.id).then(usuario=>{
+      res.render("profile-borrar", {usuario: usuario})
+    }).catch(err => {console.log(err)})
+   },
+ 
+   eliminarPerfil:(req, res, next)=>{
+    let validacion = req.body.validacion
+    let errors = {}
+    if (res.locals.usuarioId == req.body.id) {
+       if (validacion == "DELETE") {
+       db.Usuario.destroy({where:{id:req.body.id}}).then(
+          req.session.destroy(),
+          res.clearCookie("userId"),
+          res.redirect('/') 
+        )} else{
+            errors.message = "El valor ingresado no coincide con la palabra DELETE"
+            res.locals.errors = errors
+            db.Usuario.findByPk(req.body.id).then(usuario=>{
+              res.render("profile-borrar", {usuario: usuario})
+            }).catch(err => {console.log(err)})
+       }
+    }else{ 
+      res.redirect('/')
+    }
+    },
 
 }
 

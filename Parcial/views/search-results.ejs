@@ -44,6 +44,7 @@
 									<h2> <%=products[index].nombre%></h2>
 									<p class="especial"><strong><a class="especial" href="/profile/<%=products[index].usuario.id%>">@<%=products[index].usuario.nombreUsuario%></a></strong></p>
 									<p> <%=products[index].descripcion%> </p>
+									<p>Comentarios: <%= products[index].comentario.length%></p>
 								</article>
 							</a>
 						</section>

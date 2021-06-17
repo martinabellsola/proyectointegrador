@@ -34,22 +34,18 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"> <%=usuarios.nombre%> <%=usuarios.apellido%>
-					<!-- Link editar perfil -->
-			
 					<%if(logueado == true){%>
 						<%if(usuarioId == usuarios.id){%>
-						<form action="../profile/edit/<%=usuarios.id%>" method="GET">
-							<input type="hidden" name="id" value="<%=usuarios.id%>">
-							<input type="submit" class="" value="Modificar">
-						</form>
-						<form action="../profile/borrarPerfil" method="POST">
-							<input type="hidden" value="<%=usuarios.id%>" name="id">
-							<input type="submit" value="Eliminar perfil" >
-						</form>
+							<a href="/profile/edit/<%=usuarios.id%>">
+								<i class="fas fa-cog"></i>
+							</a>
+							<a href="/profile/borrarPerfil/<%=usuarios.id%>">
+								<i class="fas fa-trash-alt"></i>
+							</a>
 						<%}%>
 					<%}%>
 					</h1>
-
+					
 					<a class="btn mt-3 ml-4" href=""> Seguir</a>
 				</div>
 				<div>
@@ -82,8 +78,7 @@
 					<article class="product-box_data">
 						<h2><%= usuarios.producto[index].nombre%></h2>
 						<p> <%= usuarios.producto[index].descripcion%></p>
-						<p> Comentarios: 7 </p>
-						<!-- ¿que hacemos con los comentarios?-->
+						<p> Comentarios: <%= usuarios.producto[index].comentario.length%></p>
 					</article>
 				</a>
 			</section>

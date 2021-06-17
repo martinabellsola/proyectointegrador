@@ -19,10 +19,13 @@ const controlador = {
         ]
       }, 
       include:[
-         {  
-            association: "usuario",  
-         }, 
-      ],
+        {  
+           association: "usuario",  
+        }, 
+        {  
+           association: "comentario",  
+        }, 
+     ],
     }
     db.Producto.findAll(filtro).then(resultados=>{
       res.render("search-results", {products: resultados})
