@@ -1,13 +1,13 @@
 create table usuarios(
-id int unsigned  primary key auto_increment,
+id int unsigned primary key auto_increment,
 nombre varchar(20) not null,
 apellido varchar (20) not null,
 nombreusuario varchar(30) not null,
 contraseña varchar (200) not null,
-mail varchar (120) not null unique,
+mail varchar (120) not null,
 fechaNacimiento date not null,
 imagen varchar(120) not null default "default.jpg",
-cantidadDeSeguidores int not null default "0",
+cantidadDeSeguidores int not null default"0",
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -18,21 +18,39 @@ nombre varchar(100) not null,
 imagen varchar(120) not null,
 descripcion varchar(1000) not null,
 usuarios_id int unsigned,
-foreign key (usuarios_id) references usuarios(id) ON DELETE CASCADE,
+foreign key (usuarios_id) references usuarios(id) on delete cascade,
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 create table comentarios(
-id int unsigned  primary key auto_increment,
+id int unsigned primary key auto_increment,
 comentario varchar(1000) not null,
 usuarios_id int unsigned,
-foreign key (usuarios_id) references usuarios(id) ON DELETE CASCADE,
+foreign key (usuarios_id) references usuarios(id) on delete cascade,
 productos_id int unsigned,
-foreign key (productos_id) references productos(id) ON DELETE CASCADE,
+foreign key (productos_id) references productos(id) on delete cascade,
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+create table seguidores(
+id int unsigned primary key auto_increment,
+seguido_id int unsigned,
+foreign key (seguido_id) references usuarios(id) on delete cascade,
+seguidor_id int unsigned,
+foreign key (seguidor_id) references usuarios(id) on delete cascade,
+createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+ 
+ insert into seguidores(id, seguido_id, seguidor_id)
+ values(default, 1,2),
+ (default, 2,1),
+ (default, 2,3),
+ (default, 1,2),
+ (default, 4,2),
+ (default, 1,3);
+ 
 
 insert into usuarios(id, nombre, apellido, nombreusuario, contraseña, mail, fechaNacimiento, imagen, cantidadDeSeguidores)
 values(default,"Juan","Lopez","JuanLopez","password","juanlopez@gmail.com", "1970/04/10", "fotoJuan.jpg", 1200), 
