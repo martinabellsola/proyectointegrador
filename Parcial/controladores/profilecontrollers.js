@@ -109,18 +109,18 @@ const controlador = {
     let validacion = req.body.validacion
     let errors = {}
     if (res.locals.usuarioId == req.body.id) {
-       if (validacion == "DELETE") {
-       db.Usuario.destroy({where:{id:req.body.id}}).then(
-          req.session.destroy(),
-          res.clearCookie("userId"),
-          res.redirect('/') 
-        )} else{
-            errors.message = "El valor ingresado no coincide con la palabra DELETE"
-            res.locals.errors = errors
-            db.Usuario.findByPk(req.body.id).then(usuario=>{
-              res.render("profile-borrar", {usuario: usuario})
-            }).catch(err => {console.log(err)})
-       }
+      if (validacion == "DELETE") {
+      db.Usuario.destroy({where:{id:req.body.id}}).then(
+        req.session.destroy(),
+        res.clearCookie("userId"),
+        res.redirect('/') 
+      )} else{
+        errors.message = "El valor ingresado no coincide con la palabra DELETE"
+        res.locals.errors = errors
+        db.Usuario.findByPk(req.body.id).then(usuario=>{
+          res.render("profile-borrar", {usuario: usuario})
+        }).catch(err => {console.log(err)})
+      }
     }else{ 
       res.redirect('/')
     }

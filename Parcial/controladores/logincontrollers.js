@@ -35,7 +35,7 @@ const controlador = {
           }
           res.redirect('/')
         } else{
-          errors.message = 'la contraseña que ha ingresado es incorrecta'
+          errors.message = 'La contraseña que ha ingresado es incorrecta'
           res.locals.errors=errors
           res.render('login')
         }
