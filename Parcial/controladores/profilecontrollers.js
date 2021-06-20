@@ -12,10 +12,16 @@ const controlador = {
         {  
           association: "comentario",  
         }, 
+        {
+          association: "seguidores"
+        }, 
+        {
+          association: "seguidos"
+        }
      ],
     }
     db.Usuario.findByPk(req.params.id, filtro).then(usuario=>{
-      res.render("profile", {usuarios:usuario, producto:usuario.producto.length, comentario:usuario.comentario.length})
+      res.render("profile", {usuarios: usuario, producto: usuario.producto.length, comentario: usuario.comentario.length, seguidores:  usuario.seguidores})
     }).catch(err => {console.log(err)})
   },
 
@@ -44,7 +50,18 @@ const controlador = {
         mail: req.body.mail,
         imagen: req.file.filename},{where:{id:req.body.id}}).then(usuario=>{
         
-        let filtro = {include: [{association:"producto"}, {association:"comentario"}]}
+          let filtro = {
+            include:[
+              {  
+                association: "producto",  
+                include: "comentario"
+              }, 
+              {  
+                association: "comentario",  
+              }, 
+           ],
+          }
+
           db.Usuario.findByPk(req.body.id, filtro).then(usuarionuevo=>{
             res.render("profile", {usuarios:usuarionuevo, producto:usuarionuevo.producto.length, comentario:usuarionuevo.comentario.length})
         })
@@ -58,14 +75,24 @@ const controlador = {
         mail: req.body.mail,
         contraseña: contraencriptada,
         imagen: req.file.filename},{where:{id:req.body.id}}).then(usuario=>{
-          let filtro = {include: [{association:"producto"}, {association:"comentario"}]}
+          let filtro = {
+            include:[
+              {  
+                association: "producto",  
+                include: "comentario"
+              }, 
+              {  
+                association: "comentario",  
+              }, 
+           ],
+          }
             db.Usuario.findByPk(req.body.id, filtro).then(usuarionuevo=>{
               res.render("profile", {usuarios:usuarionuevo, producto:usuarionuevo.producto.length, comentario:usuarionuevo.comentario.length})
             }) 
       })
     } else{
-      errors.message="Porfavor es necesario que la contraseña sea mayor a 4 digitos"
-      res.locals.errors=errors
+      errors.message = "Porfavor es necesario que la contraseña sea mayor a 4 digitos"
+      res.locals.errors = errors
       db.Usuario.findByPk(req.body.id).then(usuario=>{
         res.render("profile-edit", {usuarios:usuario,})
       }).catch(err => {console.log(err)})
@@ -99,7 +126,15 @@ const controlador = {
     }
     },
 
+  seguir:(req, res, next)=>{
+    db.UserFollower.create({
+      seguidorId: res.locals.usuarioId,
+      seguidoId: req.body.followedId,
+    }).then (usuario =>{
+      res.redirect('/profile/' + usuario.seguidoId)
+    })
+  }
+
 }
 
 module.exports = controlador
-

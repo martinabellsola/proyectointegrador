@@ -20,6 +20,7 @@ router.get('/edit/:id', controlador.edit)
 router.post('/edit',  upload.single("imagen"), controlador.editProfile)
 router.post('/borrarPerfil', controlador.eliminarPerfil)
 router.get('/borrarPerfil/:id', controlador.eliminarPerfilVista)
+router.post('/follow', controlador.seguir)
 
 
 

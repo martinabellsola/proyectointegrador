@@ -33,7 +33,8 @@ foreign key (productos_id) references productos(id) on delete cascade,
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-create table seguidores(
+
+create table usersFollowers(
 id int unsigned primary key auto_increment,
 seguido_id int unsigned,
 foreign key (seguido_id) references usuarios(id) on delete cascade,
@@ -43,14 +44,11 @@ createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
  
- insert into seguidores(id, seguido_id, seguidor_id)
- values(default, 1,2),
- (default, 2,1),
- (default, 2,3),
- (default, 1,2),
- (default, 4,2),
- (default, 1,3);
- 
+insert into  usersFollowers(id, seguido_id, seguidor_id)
+values(default, 1,2),
+(default, 2,1),
+(default, 2,3),
+(default, 4,2);
 
 insert into usuarios(id, nombre, apellido, nombreusuario, contraseña, mail, fechaNacimiento, imagen, cantidadDeSeguidores)
 values(default,"Juan","Lopez","JuanLopez","password","juanlopez@gmail.com", "1970/04/10", "fotoJuan.jpg", 1200), 

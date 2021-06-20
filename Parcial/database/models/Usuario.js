@@ -43,13 +43,20 @@ module.exports = (sequelize, dataTypes) => {
         Usuario.hasMany(db.Producto,{
             as: "producto",
             foreignKey:"usuarios_id",
+        }),
+        Usuario.belongsToMany (Usuario,{
+            as: "seguidos",
+            through: "usersFollowers",
+            foreignKey:"seguidor_id",
+            otherKey:"seguido_id",
         }), 
-        Usuario.belongsToMany(db.Usuario,{
-            as: "seguidos", 
-            through: 'seguidores', 
-            foreignKey: "seguido_id", 
-            otherKey: "seguidores_id", 
+        Usuario.belongsToMany (Usuario,{
+            as: "seguidores",
+            through: "usersFollowers",
+            otherKey:"seguidor_id",
+            foreignKey:"seguido_id",
         })
     }
+
     return Usuario; 
 }; 

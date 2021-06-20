@@ -46,12 +46,18 @@
 					<%}%>
 					</h1>
 					
-					<a class="btn mt-3 ml-4" href=""> Seguir</a>
+					<%if(logueado == true){%>
+						<form class="" action="/profile/follow" method="POST">
+							<button type="submit" class="btn mt-3 ml-4"> Seguir </button>
+							<input type="hidden" value="<%=usuarios.id%>" name="followedId">
+						</form>
+					<%}%>
+
 				</div>
 				<div>
 					<ul class="">
 						<li><%=producto%> productos</li>
-						<li><%=usuarios.cantidadDeSeguidores%> seguidores</li>
+						<li><%=usuarios.seguidores.length%> seguidores</li>
 						<li><%=comentario%> comentarios</li>
 						<li><%=usuarios.fechaNacimiento%> </li>
 					</ul>
