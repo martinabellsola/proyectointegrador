@@ -93,17 +93,26 @@ const controlador = {
 
   productoEditPost:(req, res, next)=>{
    let errors = {}
+   
    if(res.locals.usuarioId == req.body.usuarioId){
-      db.Producto.update({
-      nombre: req.body.nombre,
-      imagen : req.file.filename,
-      descripcion: req.body.descripcion,
-      usuarioId:  req.session.userId
-   },{
-      where: {id: req.body.id}
-   }).then(productocreado=>{
-      res.redirect('../product/' + req.body.id)
-   }).catch(err => {console.log(err)})
+      if (req.file != undefined) {
+         db.Producto.update({
+            nombre: req.body.nombre,
+            imagen : req.file.filename,
+            descripcion: req.body.descripcion,
+            usuarioId:  req.session.userId
+         },{where: {id: req.body.id}}).then(productocreado=>{
+            res.redirect('../product/' + req.body.id)
+         }).catch(err => {console.log(err)})
+      } else{
+         db.Producto.update({
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            usuarioId:  req.session.userId
+         },{where: {id: req.body.id}}).then(productocreado=>{
+            res.redirect('../product/' + req.body.id)
+         }).catch(err => {console.log(err)})
+      }   
    } else{
       errors.message = "Usted no esta habilitado a editar este producto"
       res.locals.errors = errors

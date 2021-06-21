@@ -50,7 +50,7 @@ const controlador = {
         return res.render("register")
       } 
     
-      else if ( contra.length <= 4) {
+      else if ( contra.length < 4) {
         errors.message = "Porfavor es necesario que la contraseña tenga al menos 4 letras"
         res.locals.errors = errors
         return res.render("register")

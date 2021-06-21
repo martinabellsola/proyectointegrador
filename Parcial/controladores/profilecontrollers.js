@@ -55,12 +55,13 @@ const controlador = {
       })}
 
       if(req.body.contra=="") {
-      db.Usuario.update({
-        nombreUsuario: req.body.usuario,
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
-        mail: req.body.mail,
-        imagen: req.file.filename},{where:{id:req.body.id}}).then(usuario=>{
+        if (req.file != undefined) {
+          db.Usuario.update({
+          nombreUsuario: req.body.usuario,
+          nombre: req.body.nombre,
+          apellido: req.body.apellido,
+          mail: req.body.mail,
+          imagen: req.file.filename},{where:{id:req.body.id}}).then(usuario=>{
         
           let filtro = {
             include:[
@@ -76,8 +77,32 @@ const controlador = {
 
           db.Usuario.findByPk(req.body.id, filtro).then(usuarionuevo=>{
             res.render("profile", {usuarios:usuarionuevo, producto:usuarionuevo.producto.length, comentario:usuarionuevo.comentario.length})
-        })
-      })
+          })
+          })
+        }else{
+          db.Usuario.update({
+            nombreUsuario: req.body.usuario,
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            mail: req.body.mail},{where:{id:req.body.id}}).then(usuario=>{
+          
+            let filtro = {
+              include:[
+                {  
+                  association: "producto",  
+                  include: "comentario"
+                }, 
+                {  
+                  association: "comentario",  
+                }, 
+             ],
+            }
+  
+            db.Usuario.findByPk(req.body.id, filtro).then(usuarionuevo=>{
+              res.render("profile", {usuarios:usuarionuevo, producto:usuarionuevo.producto.length, comentario:usuarionuevo.comentario.length})
+            })
+            })
+        }
        
     } else if(req.body.contra.length >= 4) {
       db.Usuario.update({
