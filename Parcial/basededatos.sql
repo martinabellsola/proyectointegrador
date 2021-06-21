@@ -44,12 +44,6 @@ createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
  
-insert into  usersFollowers(id, seguido_id, seguidor_id)
-values(default, 1,2),
-(default, 2,1),
-(default, 2,3),
-(default, 4,2);
-
 insert into usuarios(id, nombre, apellido, nombreusuario, contraseña, mail, fechaNacimiento, imagen, cantidadDeSeguidores)
 values(default,"Juan","Lopez","JuanLopez","password","juanlopez@gmail.com", "1970/04/10", "fotoJuan.jpg", 1200), 
 (default,"Felipe","Gonzalez","felipeGonzalez","password","felipeGonzalez@gmail.com", "1997/10/27", "fotoFelipe.jpg", 500),
@@ -129,3 +123,8 @@ values(default,"¡¡Este es mi modelo de zapatillas favoritas en el mercado!! le
 (default,"No me gustan, estan pasadas de moda",  5, 10),
 (default,"¡Muy bonitas!", 6, 10); 
 
+insert into  usersFollowers(id, seguido_id, seguidor_id)
+values(default, 1,2),
+(default, 2,1),
+(default, 2,3),
+(default, 4,2);
