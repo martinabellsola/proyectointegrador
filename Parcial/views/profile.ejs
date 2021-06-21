@@ -47,10 +47,17 @@
 					</h1>
 					
 					<%if(logueado == true){%>
-						<form class="" action="/profile/follow" method="POST">
-							<button type="submit" class="btn mt-3 ml-4"> Seguir </button>
-							<input type="hidden" value="<%=usuarios.id%>" name="followedId">
-						</form>
+						<%if(seguidores == true){%>
+							<form class="" action="/profile/unfollow/" method="POST">
+								<button type="submit" class="btn mt-3 ml-4"> Dejar de seguir </button>
+								<input type="hidden" value="<%=usuarios.id%>" name="unfollowedId">
+							</form>
+						<%} else{%>
+							<form class="" action="/profile/follow" method="POST">
+								<button type="submit" class="btn mt-3 ml-4"> Seguir </button>
+								<input type="hidden" value="<%=usuarios.id%>" name="followedId">
+							</form>
+						<%}%>
 					<%}%>
 
 				</div>

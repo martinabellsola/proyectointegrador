@@ -44,13 +44,13 @@ module.exports = (sequelize, dataTypes) => {
             as: "producto",
             foreignKey:"usuarios_id",
         }),
-        Usuario.belongsToMany (Usuario,{
+        Usuario.belongsToMany(Usuario,{
             as: "seguidos",
             through: "usersFollowers",
             foreignKey:"seguidor_id",
             otherKey:"seguido_id",
         }), 
-        Usuario.belongsToMany (Usuario,{
+        Usuario.belongsToMany(Usuario,{
             as: "seguidores",
             through: "usersFollowers",
             otherKey:"seguidor_id",

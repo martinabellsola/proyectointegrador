@@ -21,7 +21,19 @@ const controlador = {
      ],
     }
     db.Usuario.findByPk(req.params.id, filtro).then(usuario=>{
-      res.render("profile", {usuarios: usuario, producto: usuario.producto.length, comentario: usuario.comentario.length, seguidores:  usuario.seguidores})
+      let respuesta = []
+      usuario.seguidores.forEach(element => {
+        respuesta.push(element.id)
+      });
+      let validacion = respuesta.indexOf(res.locals.usuarioId)
+      let final
+      if (validacion != -1) {
+        final = true
+        res.render("profile", {usuarios: usuario, producto: usuario.producto.length, comentario: usuario.comentario.length, seguidores: final})
+      } else {
+        final = false
+        res.render("profile", {usuarios: usuario, producto: usuario.producto.length, comentario: usuario.comentario.length, seguidores: final})
+      }
     }).catch(err => {console.log(err)})
   },
 
@@ -133,6 +145,19 @@ const controlador = {
     }).then (usuario =>{
       res.redirect('/profile/' + usuario.seguidoId)
     })
+  }, 
+  dejarSeguir: (req, res, next)=>{
+    db.UserFollower.findOne({
+      where: {
+        seguidorId: res.locals.usuarioId,
+        seguidoId: req.body.unfollowedId,
+      }
+    }).then(dejarUsuario =>{
+      db.UserFollower.destroy({where:{id: dejarUsuario.id}}).then (usuario =>{
+        res.redirect('/profile/' + req.body.unfollowedId)
+      })
+    })
+   
   }
 
 }
