@@ -26,6 +26,9 @@ const controlador = {
          {  
             association: "usuario",  
          }, 
+         {  
+            association: "comentario",  
+         }, 
       ],
    }     
    db.Producto.findAll(filtronuevos).then(productosnuevos=>{ 
