@@ -47,6 +47,7 @@
 					</h1>
 					
 					<%if(logueado == true){%>
+						<%if(usuarioId != usuarios.id){%>
 						<%if(seguidores == true){%>
 							<form class="" action="/profile/unfollow/" method="POST">
 								<button type="submit" class="btn mt-3 ml-4"> Dejar de seguir </button>
@@ -59,12 +60,14 @@
 							</form>
 						<%}%>
 					<%}%>
+					<%}%>
 
 				</div>
 				<div>
 					<ul class="">
 						<li><%=producto%> productos</li>
 						<li><%=usuarios.seguidores.length%> seguidores</li>
+						<% console.log(usuario.seguidores)%>
 						<li><%=comentario%> comentarios</li>
 						<li><%=usuarios.fechaNacimiento%> </li>
 					</ul>

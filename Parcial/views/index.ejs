@@ -80,6 +80,7 @@
 							<p class="especial"><strong><a class="especial" href="/profile/<%=products[index].usuario.id%>">@<%=products[index].usuario.nombreUsuario%></a></strong></p>
 							<p> <%= products[index].descripcion%></p>
 							<p>Comentarios: <%= products[index].comentario.length%></p>
+							
 						</article>
 					</a>
 				</section>
@@ -107,7 +108,8 @@
 								<h2><%= productsviejos[index].nombre%></h2>
 								<p class="especial"><strong><a class="especial" href="/profile/<%=productsviejos[index].usuario.id%>">@<%=productsviejos[index].usuario.nombreUsuario%></a></strong></p>
 								<p> <%= productsviejos[index].descripcion%></p>
-								<p>Comentarios: <%= products[index].comentario.length%></p>
+								<p>Comentarios: <%= productsviejos[index].comentario.length%></p>
+						
 							</article>
 						</a>
 					</section>
