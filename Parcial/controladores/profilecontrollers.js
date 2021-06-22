@@ -21,19 +21,7 @@ const controlador = {
      ],
     }
     db.Usuario.findByPk(req.params.id, filtro).then(usuario=>{
-      let respuesta = []
-      usuario.seguidores.forEach(element => {
-        respuesta.push(element.id)
-      });
-      let validacion = respuesta.indexOf(res.locals.usuarioId)
-      let final
-      if (validacion != -1) {
-        final = true
-        res.render("profile", {usuarios: usuario, producto: usuario.producto.length, comentario: usuario.comentario.length, seguidores: final})
-      } else {
-        final = false
-        res.render("profile", {usuarios: usuario, producto: usuario.producto.length, comentario: usuario.comentario.length, seguidores: final})
-      }
+      res.render("profile", {usuarios: usuario, producto: usuario.producto.length, comentario: usuario.comentario.length, seguidores: usuario.seguidores.length})
     }).catch(err => {console.log(err)})
   },
 
