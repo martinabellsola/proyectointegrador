@@ -4,13 +4,14 @@ let controlador = require("../controladores/indexControllers")
 
 //MULTER 
 var multer = require("multer");
+var path = require("path");
 var upload = multer({
     storage: multer.diskStorage({
         destination: function (req, file, cb) {
             cb(null, "./public/images/products");
         },
         filename: function (req, file, cb) {
-            cb(null, file.originalname + "-" + Date.now())
+            cb(null,  file.fieldname + "-" + Date.now() +  path.extname(file.originalname))
         }
     }),
 })

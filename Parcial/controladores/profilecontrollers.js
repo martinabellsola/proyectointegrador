@@ -72,6 +72,12 @@ const controlador = {
               {  
                 association: "comentario",  
               }, 
+              {
+                association: "seguidores"
+              }, 
+              {
+                association: "seguidos"
+              }
            ],
           }
 
